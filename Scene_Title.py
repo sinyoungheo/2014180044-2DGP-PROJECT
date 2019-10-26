@@ -1,4 +1,5 @@
 import GameFramework
+import Scene_Stage1
 from pico2d import *
 
 image = None

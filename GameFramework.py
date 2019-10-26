@@ -29,7 +29,7 @@ def Push_State(state):
     global stack
 
     if len(stack) > 0:
-        stack[-1].pause
+        stack[-1].Pause()
 
     stack.append(state)
     state.Enter()
