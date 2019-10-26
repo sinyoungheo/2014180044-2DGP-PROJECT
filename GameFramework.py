@@ -3,6 +3,7 @@ class GameState:
         self.Enter = state.Enter
         self.Exit = state.Exit
         self.Pause = state.Pause
+        self.Resume = state.Resume
         self.Handle_Events = state.Handle_Events
         self.Update = state.Update
         self.Render = state.Render

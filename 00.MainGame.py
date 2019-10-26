@@ -2,7 +2,11 @@ import pico2d
 import GameFramework
 import Scene_Title
 
-pico2d.open_canvas(800, 600)
+
+WINCX = 720
+WINCY = 960
+
+pico2d.open_canvas(WINCX, WINCY)
 
 GameFramework.Run(Scene_Title)
 
