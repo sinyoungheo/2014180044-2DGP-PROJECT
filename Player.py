@@ -1,5 +1,7 @@
 from pico2d import *
 import keyboard
+import PlayerBullet
+import ObjectMgr
 
 
 class CPlayer:
@@ -10,6 +12,8 @@ class CPlayer:
         self.x, self.y = 360, 80
         self.dir = 0
         self.speed = 10
+        self.time_CreateBullet = 0.0
+        self.time_UpdateCreateBullet = 1.0
 
     def Handle_Events(self):
         if keyboard.is_pressed('left'):
@@ -44,6 +48,13 @@ class CPlayer:
         if self.x >= 720 - 64:
             self.x = self.x - self.speed
             pass
+
+        # Create Bullet
+        self.time_CreateBullet = self.time_CreateBullet + 0.1
+        if self.time_CreateBullet >= self.time_UpdateCreateBullet:
+            GameObject = PlayerBullet.CPlayerBullet(self.x, self.y, "bullet_01_01.png")
+            ObjectMgr.Add_GameObject(GameObject, "PlayerBullet")
+            self.time_CreateBullet = 0.0
 
         return 0
         pass

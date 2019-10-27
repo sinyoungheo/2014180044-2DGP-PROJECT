@@ -1,5 +1,6 @@
 from pico2d import *
 import Player
+import PlayerBullet
 
 # Object List
 ObjLst = []
@@ -19,7 +20,6 @@ ObjLst.append(LstItem)
 
 Event = 0
 
-
 # KeyInput Event
 def Handle_Events():
     global ObjLst
@@ -37,13 +37,15 @@ def Update():
     global ObjLst
 
     for List in ObjLst:
+        # num = len(List)
+        # print(num)
         for GameObj in List:
             Event = GameObj.Update()
 
             # 게임 오브젝트 사망시 제거.
             if Event == -1:
+                List.remove(GameObj)
                 del GameObj
-                del List[GameObj]
 
     pass
 
