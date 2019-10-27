@@ -25,8 +25,8 @@ def Handle_Events():
         else:
             if (event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
                 GameFramework.Quit()
-            # elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_SPACE):
-            # GameFramework.Change_State(Scene_Stage_1)
+            elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_SPACE):
+                GameFramework.Change_State(Scene_Stage1)
     pass
 
 
