@@ -1,8 +1,18 @@
 from pico2d import *
 import ObjectMgr
 import Player
+import Monster
 
+# 배경 이미지
 image = None
+
+# Monster 생성 시간
+time_CreateMonster = 10.0
+time_UpdateCreateMonster = 10.0
+
+Pos_CreateX = 60
+Pos_CreateY = 960
+Pos_OffsetX = 76
 
 
 def Enter():
@@ -27,7 +37,27 @@ def Handle_Events():
 
 
 def Update():
+    # Monster 생성.
+    global time_CreateMonster
+    global time_UpdateCreateMonster
+    global Pos_CreateX
+    global Pos_CreateY
+    global Pos_OffsetX
+
+    time_CreateMonster = time_CreateMonster + 0.1
+    if time_CreateMonster >= time_UpdateCreateMonster:
+        for n in range(0, 8 + 1):
+            PosX = Pos_CreateX + Pos_OffsetX * n
+            GameObject = Monster.CMonster(PosX, Pos_CreateY, 50, 3, "Enemy01.png")
+
+            ObjectMgr.Add_GameObject(GameObject, "Monster")
+            pass
+
+        Pos_CreateX = 76
+        time_CreateMonster = 0.0
+
     ObjectMgr.Update()
+
     pass
 
 
