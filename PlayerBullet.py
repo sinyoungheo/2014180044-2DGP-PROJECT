@@ -10,9 +10,10 @@ class CPlayerBullet:
         global FilePath
         FilePath = FilePath + FileName
 
-        self.IsDead = False
         if CPlayerBullet.image is None:
             CPlayerBullet.image = load_image(FilePath)
+
+        self.IsDead = False
         self.x, self.y = PosX, PosY
         self.speed = 20
         self.damage = 10
