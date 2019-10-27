@@ -1,4 +1,5 @@
 from pico2d import *
+import random
 import ObjectMgr
 import Player
 import Monster
@@ -46,7 +47,7 @@ def Update():
 
     time_CreateMonster = time_CreateMonster + 0.1
     if time_CreateMonster >= time_UpdateCreateMonster:
-        for n in range(0, 8 + 1):
+        for n in range(random.randint(0, 2 + 1), random.randint(5, 8 + 1)):
             PosX = Pos_CreateX + Pos_OffsetX * n
             GameObject = Monster.CMonster(PosX, Pos_CreateY, 50, 3, "Enemy01.png")
 
