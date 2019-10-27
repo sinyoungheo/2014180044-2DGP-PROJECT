@@ -11,9 +11,9 @@ class CPlayer:
         self.frame = 0
         self.x, self.y = 360, 80
         self.dir = 0
-        self.speed = 10
+        self.speed = 15
         self.time_CreateBullet = 0.0
-        self.time_UpdateCreateBullet = 1.0
+        self.time_UpdateCreateBullet = 0.5
 
     def Handle_Events(self):
         if keyboard.is_pressed('left'):

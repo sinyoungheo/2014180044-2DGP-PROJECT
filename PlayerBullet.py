@@ -11,10 +11,10 @@ class CPlayerBullet:
         FilePath = FilePath + FileName
 
         self.IsDead = False
-        if CPlayerBullet.image == None:
+        if CPlayerBullet.image is None:
             CPlayerBullet.image = load_image(FilePath)
         self.x, self.y = PosX, PosY
-        self.speed = 10
+        self.speed = 20
 
     def Handle_Events(self):
         pass
