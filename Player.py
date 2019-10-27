@@ -18,7 +18,7 @@ class CPlayer:
         # 경험치 및 레벨.
         self.level = 1
         self.exp = 0
-        self.maxexp = 100
+        self.max_exp = 100
         self.damage = 10
         # 탄환 이미지
         self.bullet_filename = "bullet_01_01.png"
