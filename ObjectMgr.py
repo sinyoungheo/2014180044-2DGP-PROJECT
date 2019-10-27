@@ -20,6 +20,7 @@ ObjLst.append(LstItem)
 Event = 0
 
 
+# KeyInput Event
 def Handle_Events():
     global ObjLst
 
@@ -30,6 +31,7 @@ def Handle_Events():
     pass
 
 
+# GameObject Update
 def Update():
     global Event
     global ObjLst
@@ -41,11 +43,12 @@ def Update():
             # 게임 오브젝트 사망시 제거.
             if Event == -1:
                 del GameObj
-                ObjLst.pop()
+                del List[GameObj]
 
     pass
 
 
+# GameObject Render
 def Render():
     global ObjLst
 
@@ -56,6 +59,7 @@ def Render():
     pass
 
 
+# GameObject Add
 def Add_GameObject(GameObject, ObjID):
     global LstPlayer
     global LstPlayerBullet

@@ -38,6 +38,7 @@ def Render():
     ObjectMgr.Render()
 
     update_canvas()
+    delay(0.015)
     pass
 
 
