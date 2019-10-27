@@ -6,7 +6,7 @@ FilePath = "Resource/Bullet/"
 class CPlayerBullet:
     image = None
 
-    def __init__(self, PosX, PosY, FileName):
+    def __init__(self, PosX, PosY, Damage, FileName):
         global FilePath
         FilePath = FilePath + FileName
 
@@ -15,6 +15,7 @@ class CPlayerBullet:
             CPlayerBullet.image = load_image(FilePath)
         self.x, self.y = PosX, PosY
         self.speed = 20
+        self.damage = 10
 
     def Handle_Events(self):
         pass

@@ -12,8 +12,16 @@ class CPlayer:
         self.x, self.y = 360, 80
         self.dir = 0
         self.speed = 15
+        # 총알 생성 주기.
         self.time_CreateBullet = 0.0
         self.time_UpdateCreateBullet = 0.5
+        # 경험치 및 레벨.
+        self.level = 1
+        self.exp = 0
+        self.maxexp = 100
+        self.damage = 10
+        # 탄환 이미지
+        self.bullet_filename = "bullet_01_01.png"
 
     def Handle_Events(self):
         if keyboard.is_pressed('left'):
@@ -52,7 +60,7 @@ class CPlayer:
         # Create Bullet
         self.time_CreateBullet = self.time_CreateBullet + 0.1
         if self.time_CreateBullet >= self.time_UpdateCreateBullet:
-            GameObject = PlayerBullet.CPlayerBullet(self.x, self.y, "bullet_01_01.png")
+            GameObject = PlayerBullet.CPlayerBullet(self.x, self.y, self.damage, self.bullet_filename)
             ObjectMgr.Add_GameObject(GameObject, "PlayerBullet")
             self.time_CreateBullet = 0.0
 
