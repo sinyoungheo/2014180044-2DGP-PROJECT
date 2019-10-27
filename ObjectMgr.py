@@ -1,4 +1,5 @@
 from pico2d import *
+import Player
 
 # Object List
 ObjLst = []
@@ -13,6 +14,7 @@ Item = []
 ObjLst.append(Player)
 ObjLst.append(PlayerBullet)
 ObjLst.append(Monster)
+ObjLst.append(MonsterBullet)
 ObjLst.append(Item)
 
 Event = 0
@@ -41,3 +43,21 @@ def Render():
             GameObj.Render()
 
     pass
+
+
+
+def Add_GameObject(GameObject, ObjID):
+    if ObjID == "Player":
+        pass
+
+    if ObjID == "PlayerBullet":
+        pass
+
+    if ObjID == "Monster":
+        pass
+
+    if ObjID == "MonsterBullet":
+        pass
+
+    if ObjID == "Item":
+        pass
