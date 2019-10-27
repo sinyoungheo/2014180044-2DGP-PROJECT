@@ -38,7 +38,12 @@ class CPlayer:
         self.x = self.x + self.speed * self.dir
 
         # OffSet
-
+        if self.x <= 0 + 64:
+            self.x = self.x + self.speed
+            pass
+        if self.x >= 720 - 64:
+            self.x = self.x - self.speed
+            pass
 
         return 0
         pass
