@@ -37,6 +37,9 @@ class CPlayer:
         # Move
         self.x = self.x + self.speed * self.dir
 
+        # OffSet
+
+
         return 0
         pass
 
