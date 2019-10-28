@@ -60,6 +60,9 @@ class CPlayer:
             self.x = self.x - self.speed
             pass
 
+        # Level에 따른 Bullet 변경.
+        self.Change_Bullet()
+
         # Create Bullet
         self.time_CreateBullet = self.time_CreateBullet + 0.1
         if self.time_CreateBullet >= self.time_UpdateCreateBullet:
@@ -93,4 +96,37 @@ class CPlayer:
             # PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX, ScaleY, FileName
             GameObj = Effect.CEffect(self.x, self.y, 256, 256, 1, False, True, 30, 100, 256, 256, "LvUp.png")
             ObjectMgr.Add_GameObject(GameObj, "Effect")
+        pass
+
+    def Change_Bullet(self):
+        if self.level >= 5:
+            self.bullet_filename = "bullet_Lv2.png"
+            self.bullet_radius = 32
+            pass
+
+        if self.level >= 10:
+            self.bullet_filename = "bullet_Lv3.png"
+            self.bullet_radius = 64
+            pass
+
+        if self.level >= 15:
+            self.bullet_filename = "bullet_Lv4.png"
+            self.bullet_radius = 64
+            pass
+
+        if self.level >= 20:
+            self.bullet_filename = "bullet_Lv5.png"
+            self.bullet_radius = 64
+            pass
+
+        if self.level >= 25:
+            self.bullet_filename = "bullet_Lv6.png"
+            self.bullet_radius = 50
+            pass
+
+        if self.level >= 30:
+            self.bullet_filename = "bullet_Lv7.png"
+            self.bullet_radius = 64
+            pass
+
         pass
