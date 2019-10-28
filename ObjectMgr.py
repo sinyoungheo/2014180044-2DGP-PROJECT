@@ -1,6 +1,3 @@
-from pico2d import *
-import Player
-import PlayerBullet
 import CollisionMgr
 
 # Object List
@@ -50,9 +47,10 @@ def Update():
                 del GameObj
 
     # CollisionMgr
+    global LstPlayer
     global LstMonster
     global LstPlayerBullet
-    CollisionMgr.Collision_Monster_PLBullet(LstMonster, LstPlayerBullet)
+    CollisionMgr.Collision_Monster_PLBullet(LstMonster, LstPlayerBullet, LstPlayer[0])
 
     pass
 

@@ -22,7 +22,7 @@ def Collision_Monster_Player(DstLst, SrcLst):
 
 
 # Monster & Player Bullet
-def Collision_Monster_PLBullet(DstLst, SrcLst):
+def Collision_Monster_PLBullet(DstLst, SrcLst, Player):
     # DstLst - Monster
     # SrcLst - Player Bullet
 
