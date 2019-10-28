@@ -8,7 +8,7 @@ import Monster
 # 배경 이미지
 image = None
 
-# Monster 생성 시간
+# Monster01 생성 시간
 time_CreateMonster = 10.0
 time_UpdateCreateMonster = 10.0
 
@@ -49,7 +49,9 @@ def Update():
     global Pos_CreateY
     global Pos_OffsetX
 
+    # Monster 01 생성.
     time_CreateMonster = time_CreateMonster + 0.1
+
     if time_CreateMonster >= time_UpdateCreateMonster:
         for n in range(random.randint(0, 2 + 1), random.randint(5, 8 + 1)):
             PosX = Pos_CreateX + Pos_OffsetX * n
@@ -61,6 +63,10 @@ def Update():
 
         Pos_CreateX = 76
         time_CreateMonster = 0.0
+
+    # Monster 02 생성
+
+    # Monster 03 생성
 
     pass
 

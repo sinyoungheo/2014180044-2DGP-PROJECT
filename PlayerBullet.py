@@ -1,23 +1,19 @@
 from pico2d import *
 
-FilePath = "Resource/Bullet/"
-
 
 class CPlayerBullet:
-    image = None
+    image = [None]
 
     def __init__(self, PosX, PosY, Damage, Radius, FileName):
-        global FilePath
-        FilePath = FilePath + FileName
-
-        if CPlayerBullet.image is None:
-            CPlayerBullet.image = load_image(FilePath)
+        if CPlayerBullet.image[0] is None:
+            CPlayerBullet.image[0] = load_image("Resource/Bullet/bullet_01_01.png")
 
         self.IsDead = False
         self.x, self.y = PosX, PosY
         self.speed = 20
         self.damage = Damage
         self.radius = Radius
+        self.filename = FileName
 
     def Handle_Events(self):
         pass
@@ -38,8 +34,13 @@ class CPlayerBullet:
         pass
 
     def Render(self):
+        index = 0
+
+        if self.filename == "bullet_01_01.png":
+            index = 0
+
         if not self.IsDead:
-            CPlayerBullet.image.draw(self.x, self.y)
+            CPlayerBullet.image[0].draw(self.x, self.y)
         pass
 
     def DeadObject(self):

@@ -53,14 +53,14 @@ class CMonster:
     def Render(self):
         index = 0
 
-        if not self.IsDead:
-            if self.filename == "Enemy01.png":
-                index = 0
-            elif self.filename == "Enemy02.png":
-                index = 1
-            elif self.filename == "Enemy03.png":
-                index = 2
+        if self.filename == "Enemy01.png":
+            index = 0
+        elif self.filename == "Enemy02.png":
+            index = 1
+        elif self.filename == "Enemy03.png":
+            index = 2
 
+        if not self.IsDead:
             CMonster.image[index].clip_draw(self.frame * 76, 0, 76, 51, self.x, self.y)
         pass
 
