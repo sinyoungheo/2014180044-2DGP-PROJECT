@@ -7,7 +7,7 @@ FilePath = "Resource/Monster/"
 class CMonster:
     image = None
 
-    def __init__(self, PosX, PosY, Hp, Speed, FileName):
+    def __init__(self, PosX, PosY, Hp, Speed, Radius, FileName):
         global FilePath
         FilePath = FilePath + FileName
 
@@ -18,6 +18,7 @@ class CMonster:
         self.frame = random.randint(0, 3)
         self.x, self.y = PosX, PosY
         self.speed = Speed
+        self.radius = Radius
         self.hp = Hp
         self.max_hp = self.hp
 

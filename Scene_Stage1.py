@@ -38,6 +38,9 @@ def Handle_Events():
 
 
 def Update():
+    # Object Update
+    ObjectMgr.Update()
+
     # Monster 생성.
     global time_CreateMonster
     global time_UpdateCreateMonster
@@ -49,7 +52,7 @@ def Update():
     if time_CreateMonster >= time_UpdateCreateMonster:
         for n in range(random.randint(0, 2 + 1), random.randint(5, 8 + 1)):
             PosX = Pos_CreateX + Pos_OffsetX * n
-            GameObject = Monster.CMonster(PosX, Pos_CreateY, 50, 3, "Enemy01.png")
+            GameObject = Monster.CMonster(PosX, Pos_CreateY, 50, 3, 25, "Enemy01.png")
 
             ObjectMgr.Add_GameObject(GameObject, "Monster")
             pass
@@ -57,12 +60,11 @@ def Update():
         Pos_CreateX = 76
         time_CreateMonster = 0.0
 
-    ObjectMgr.Update()
-
     pass
 
 
 def Render():
+    # Object Render
     clear_canvas()
 
     image.draw(360, 480, 720, 960)
