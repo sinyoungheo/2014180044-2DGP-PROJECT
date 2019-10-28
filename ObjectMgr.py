@@ -1,6 +1,7 @@
 from pico2d import *
 import Player
 import PlayerBullet
+import CollisionMgr
 
 # Object List
 ObjLst = []
@@ -19,6 +20,7 @@ ObjLst.append(LstMonsterBullet)
 ObjLst.append(LstItem)
 
 Event = 0
+
 
 # KeyInput Event
 def Handle_Events():
@@ -46,6 +48,11 @@ def Update():
             if Event == -1:
                 List.remove(GameObj)
                 del GameObj
+
+    # CollisionMgr
+    global LstMonster
+    global LstPlayerBullet
+    CollisionMgr.Collision_Monster_PLBullet(LstMonster, LstPlayerBullet)
 
     pass
 

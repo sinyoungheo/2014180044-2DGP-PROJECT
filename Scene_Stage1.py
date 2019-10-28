@@ -4,6 +4,7 @@ import ObjectMgr
 import Player
 import Monster
 
+
 # 배경 이미지
 image = None
 
