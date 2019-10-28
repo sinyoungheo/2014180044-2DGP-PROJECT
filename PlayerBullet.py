@@ -32,7 +32,6 @@ class CPlayerBullet:
         self.damage = Damage
         self.radius = Radius
         self.filename = FileName
-        print(FileName)
 
     def Handle_Events(self):
         pass
