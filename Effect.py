@@ -1,6 +1,5 @@
 from pico2d import *
 
-FilePath = "Resource/Effect/"
 time = 0.0
 
 

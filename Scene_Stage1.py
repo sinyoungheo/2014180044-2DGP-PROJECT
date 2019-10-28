@@ -12,9 +12,9 @@ image = None
 time_CreateMonster = 10.0
 time_UpdateCreateMonster = 10.0
 
-Pos_CreateX = 60
+Pos_CreateX = 52
 Pos_CreateY = 960
-Pos_OffsetX = 76
+Pos_OffsetX = 114
 
 
 def Enter():
@@ -53,10 +53,10 @@ def Update():
     time_CreateMonster = time_CreateMonster + 0.1
 
     if time_CreateMonster >= time_UpdateCreateMonster:
-        for n in range(random.randint(0, 2 + 1), random.randint(5, 8 + 1)):
+        for n in range(random.randint(0, 2 + 1), random.randint(3, 5 + 1)):
             PosX = Pos_CreateX + Pos_OffsetX * n
-            # x, y, hp, speed, radius, exp, filename
-            GameObject = Monster.CMonster(PosX, Pos_CreateY, 50, 3, 25, 100, "Enemy01.png")
+            # x, y, scaleX, scaleY, hp, speed, radius, exp, filename
+            GameObject = Monster.CMonster(PosX, Pos_CreateY, 114, 76, 50, 3, 25, 100, "Enemy01.png")
 
             ObjectMgr.Add_GameObject(GameObject, "Monster")
             pass

@@ -5,7 +5,7 @@ import random
 class CMonster:
     image = [None, None, None]
 
-    def __init__(self, PosX, PosY, Hp, Speed, Radius, Exp, FileName):
+    def __init__(self, PosX, PosY, ScaleX, ScaleY, Hp, Speed, Radius, Exp, FileName):
         if CMonster.image[0] is None:
             CMonster.image[0] = load_image("Resource/Monster/Enemy01.png")
 
@@ -18,6 +18,7 @@ class CMonster:
         self.IsDead = False
         self.frame = random.randint(0, 3)
         self.x, self.y = PosX, PosY
+        self.scaleX, self.scaleY = ScaleX, ScaleY
         self.speed = Speed
         self.radius = Radius
         self.hp = Hp
@@ -61,7 +62,7 @@ class CMonster:
             index = 2
 
         if not self.IsDead:
-            CMonster.image[index].clip_draw(self.frame * 76, 0, 76, 51, self.x, self.y)
+            CMonster.image[index].clip_draw(self.frame * 76, 0, 76, 51, self.x, self.y, self.scaleX, self.scaleY)
         pass
 
     def DeadObject(self):
