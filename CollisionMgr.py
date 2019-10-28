@@ -1,5 +1,6 @@
 import ObjectMgr
 import math
+import Effect
 
 
 # 원 충돌 검사.
@@ -38,6 +39,11 @@ def Collision_Monster_PLBullet(DstLst, SrcLst, Player):
                 if Dst.hp <= 0:
                     Dst.IsDead = True
                     Player.exp += Dst.exp
+
+                # Monster 사망 Effect
+                    # PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX, ScaleY, FileName
+                    GameObj = Effect.CEffect(Dst.x, Dst.y, 76, 51, 0.3, False, False, 4, 2, 76, 51, "dust.png")
+                    ObjectMgr.Add_GameObject(GameObj, "Effect")
                 pass
 
     return False

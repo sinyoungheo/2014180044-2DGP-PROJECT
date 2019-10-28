@@ -2,6 +2,7 @@ from pico2d import *
 import keyboard
 import PlayerBullet
 import ObjectMgr
+import Effect
 
 
 class CPlayer:
@@ -85,5 +86,9 @@ class CPlayer:
         # 현재 exp가 max_exp보다 작을 때 까지.
         while self.exp >= self.max_exp:
             self.exp -= self.max_exp
+            self.max_exp = self.max_exp * 1.15
             self.level += 1
+            # PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX, ScaleY, FileName
+            GameObj = Effect.CEffect(self.x, self.y, 256, 256, 1, False, True, 30, 100, 256, 256, "LvUp.png")
+            ObjectMgr.Add_GameObject(GameObj, "Effect")
         pass
