@@ -6,7 +6,7 @@ class CPlayerBullet:
 
     def __init__(self, PosX, PosY, Damage, Radius, FileName):
         if CPlayerBullet.image[0] is None:
-            CPlayerBullet.image[0] = load_image("Resource/Bullet/bullet_01_01.png")
+            CPlayerBullet.image[0] = load_image("Resource/Bullet/bullet_Lv1.png")
 
         self.IsDead = False
         self.x, self.y = PosX, PosY
@@ -36,7 +36,7 @@ class CPlayerBullet:
     def Render(self):
         index = 0
 
-        if self.filename == "bullet_01_01.png":
+        if self.filename == "bullet_Lv1.png":
             index = 0
 
         if not self.IsDead:

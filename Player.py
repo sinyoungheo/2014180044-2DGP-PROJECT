@@ -23,7 +23,7 @@ class CPlayer:
         self.max_exp = 100
         self.damage = 10
         # 탄환 이미지
-        self.bullet_filename = "bullet_01_01.png"
+        self.bullet_filename = "bullet_Lv1.png"
         self.bullet_radius = 32
 
     def Handle_Events(self):
