@@ -88,6 +88,8 @@ class CPlayer:
             self.exp -= self.max_exp
             self.max_exp = self.max_exp * 1.15
             self.level += 1
+            self.damage += 10
+
             # PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX, ScaleY, FileName
             GameObj = Effect.CEffect(self.x, self.y, 256, 256, 1, False, True, 30, 100, 256, 256, "LvUp.png")
             ObjectMgr.Add_GameObject(GameObj, "Effect")

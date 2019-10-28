@@ -1,18 +1,19 @@
 from pico2d import *
 import random
 
-FilePath = "Resource/Monster/"
-
 
 class CMonster:
-    image = None
+    image = [None, None, None]
 
     def __init__(self, PosX, PosY, Hp, Speed, Radius, Exp, FileName):
-        global FilePath
-        FilePath = FilePath + FileName
+        if CMonster.image[0] is None:
+            CMonster.image[0] = load_image("Resource/Monster/Enemy01.png")
 
-        if CMonster.image is None:
-            CMonster.image = load_image(FilePath)
+        if CMonster.image[1] is None:
+            CMonster.image[1] = load_image("Resource/Monster/Enemy02.png")
+
+        if CMonster.image[2] is None:
+            CMonster.image[2] = load_image("Resource/Monster/Enemy03.png")
 
         self.IsDead = False
         self.frame = random.randint(0, 3)
@@ -22,6 +23,7 @@ class CMonster:
         self.hp = Hp
         self.max_hp = self.hp
         self.exp = Exp
+        self.filename = FileName
 
     def Handle_Events(self):
         pass
@@ -49,8 +51,17 @@ class CMonster:
         pass
 
     def Render(self):
+        index = 0
+
         if not self.IsDead:
-            CMonster.image.clip_draw(self.frame * 76, 0, 76, 51, self.x, self.y)
+            if self.filename == "Enemy01.png":
+                index = 0
+            elif self.filename == "Enemy02.png":
+                index = 1
+            elif self.filename == "Enemy03.png":
+                index = 2
+
+            CMonster.image[index].clip_draw(self.frame * 76, 0, 76, 51, self.x, self.y)
         pass
 
     def DeadObject(self):
