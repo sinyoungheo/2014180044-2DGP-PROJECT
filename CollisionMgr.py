@@ -31,6 +31,13 @@ def Collision_Monster_PLBullet(DstLst, SrcLst, Player):
             if Check_Collision(Dst, Src):
                 # Delete Bullet
                 Src.DeadObject()
+
+                # Monster Hp 감소
+                Dst.hp -= Src.damage
+                # Monster 사망 시 Player Exp 증가.
+                if Dst.hp <= 0:
+                    Dst.IsDead = True
+                    Player.exp += Dst.exp
                 pass
 
     return False

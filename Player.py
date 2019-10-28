@@ -62,9 +62,13 @@ class CPlayer:
         # Create Bullet
         self.time_CreateBullet = self.time_CreateBullet + 0.1
         if self.time_CreateBullet >= self.time_UpdateCreateBullet:
+            # x, y, Damage, Radius, FileName
             GameObject = PlayerBullet.CPlayerBullet(self.x, self.y, self.damage, self.bullet_radius, self.bullet_filename)
             ObjectMgr.Add_GameObject(GameObject, "PlayerBullet")
             self.time_CreateBullet = 0.0
+
+        # LevelUp Check
+        self.Check_LevelUp()
 
         return 0
         pass
@@ -75,4 +79,11 @@ class CPlayer:
 
     def DeadObject(self):
         self.IsDead = True
+        pass
+
+    def Check_LevelUp(self):
+        # 현재 exp가 max_exp보다 작을 때 까지.
+        while self.exp >= self.max_exp:
+            self.exp -= self.max_exp
+            self.level += 1
         pass

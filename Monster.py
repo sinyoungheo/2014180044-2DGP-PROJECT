@@ -41,6 +41,10 @@ class CMonster:
             self.IsDead = True
             pass
 
+        # Check Hp
+        if self.hp <= 0:
+            self.IsDead = True
+
         return 0
         pass
 
