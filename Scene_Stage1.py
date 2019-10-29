@@ -59,7 +59,7 @@ def Update():
     global PlayTime
     PlayTime = get_time()
 
-    print(PlayTime)
+    # print(PlayTime)
 
     # Object Update
     ObjectMgr.Update()
