@@ -6,7 +6,7 @@ import random
 
 # Random Item 생성.
 Lst_CoinLottery = []
-for n in range(0, 50):
+for n in range(0, 40):
     Lst_CoinLottery.append(0)
 for n in range(0, 25):
     Lst_CoinLottery.append(1)
@@ -16,6 +16,22 @@ for n in range(0, 15):
     Lst_CoinLottery.append(3)
 
 random.shuffle(Lst_CoinLottery)
+
+Lst_ItemLottery = []
+for n in range(0, 70):
+    Lst_ItemLottery.append(0)   # 꽝
+for n in range(0, 15):
+    Lst_ItemLottery.append(1)   # dual shot
+for n in range(0, 15):
+    Lst_ItemLottery.append(2)   # egg
+for n in range(0, 15):
+    Lst_ItemLottery.append(3)   # formation
+for n in range(0, 15):
+    Lst_ItemLottery.append(4)   # invincible
+for n in range(0, 15):
+    Lst_ItemLottery.append(5)   # magnet
+
+random.shuffle(Lst_ItemLottery)
 
 
 # 원 충돌 검사.
@@ -66,16 +82,29 @@ def Collision_Monster_PLBullet(DstLst, SrcLst, Player):
                     FileName = ""
                     if coin_num == 0:
                         FileName = "item_coin0.png"
-                    if coin_num == 1:
+                    elif coin_num == 1:
                         FileName = "item_coin1.png"
-                    if coin_num == 2:
+                    elif coin_num == 2:
                         FileName = "item_coin2.png"
-                    if coin_num == 3:
+                    elif coin_num == 3:
                         FileName = "item_coin3.png"
 
                     # PosX, PosY, CX, CY, Radius, ScaleX, ScaleY, Target, FileName
-                    GameObject = Item.CItem(Dst.x, Dst.y, 64, 64, 16, 64, 64, None, FileName)
+                    GameObject = Item.CItem(Dst.x, Dst.y, 64, 64, 16, 64, 64, Player, FileName)
                     ObjectMgr.Add_GameObject(GameObject, "Item")
+
+                    # Item 생성
+                    item_num = random.choice(Lst_ItemLottery)
+                    ItemFileName = ""
+                    if item_num != 0:
+                        if item_num == 1:
+                            ItemFileName = "item_dualshot.png"
+                        elif item_num == 2:
+                            ItemFileName = "item_egg.png"
+                        elif item_num == 3:
+                            ItemFileName = "item_formation.png"
+
+                        pass
                 pass
 
     return False
