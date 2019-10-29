@@ -1,5 +1,7 @@
 from pico2d import *
 import random
+import Item
+import ObjectMgr
 
 
 class CMonster:
@@ -31,6 +33,10 @@ class CMonster:
 
     def Update(self):
         if self.IsDead:
+            # Item 생성.
+            # PosX, PosY, CX, CY, Radius, ScaleX, ScaleY, Target, FileName
+            GameObject = Item.CItem(self.x, self.y, 64, 64, 16, 64, 64, None, "item_coin0.png")
+            ObjectMgr.Add_GameObject(GameObject, "Item")
             return -1
 
         # Animation

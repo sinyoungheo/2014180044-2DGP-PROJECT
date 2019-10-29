@@ -85,6 +85,8 @@ class CPlayer:
         self.image.clip_draw(self.frame * 128, 0, 128, 106, self.x, self.y)
         pass
 
+    ##################################################################################################################
+
     def DeadObject(self):
         self.IsDead = True
         pass

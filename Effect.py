@@ -6,7 +6,8 @@ time = 0.0
 class CEffect:
     image = [None, None]
 
-    def __init__(self, PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX, ScaleY, FileName):
+    def __init__(self, PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX,
+                 ScaleY, FileName):
         self.IsDead = False
         self.x = PosX
         self.y = PosY
@@ -67,10 +68,9 @@ class CEffect:
                 index = 1
 
             if not self.isSingleEffect:
-                self.image[index].clip_draw(int(self.frame) * self.cx, 0, self.cx, self.cy, self.x, self.y, self.scaleX,
-                                            self.scaleY)
+                CEffect.image[index].clip_draw(int(self.frame) * self.cx, 0, self.cx, self.cy, self.x, self.y, self.scaleX, self.scaleY)
             else:
-                self.image[index].draw(self.x, self.y, self.scaleX, self.scaleY)
+                CEffect.image[index].draw(self.x, self.y, self.scaleX, self.scaleY)
 
         pass
 
