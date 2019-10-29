@@ -8,12 +8,18 @@ import Monster
 image = None
 
 # Monster01 생성 시간
-time_CreateMonster = 10.0
-time_UpdateCreateMonster = 10.0
+time_CreateMonster01 = 10.0
+time_UpdateCreateMonster01 = 10.0
 
+# Monster 생성 위치.
 Pos_CreateX = 52
 Pos_CreateY = 960
 Pos_OffsetX = 114
+
+# Monster 생성 인자.
+Monster_Hp = 100
+Monster_Speed = 3
+Monster_Exp = 50
 
 # Game Play Time
 PlayTime = 0.0
@@ -49,20 +55,26 @@ def Update():
     ObjectMgr.Update()
 
     # Monster 생성.
-    global time_CreateMonster
-    global time_UpdateCreateMonster
+    global time_CreateMonster01
+    global time_UpdateCreateMonster01
     global Pos_CreateX
     global Pos_CreateY
     global Pos_OffsetX
+    global Monster_Hp
+    global Monster_Speed
+    global Monster_Exp
 
     # Monster 01 생성.
-    time_CreateMonster = time_CreateMonster + 0.1
+    time_CreateMonster01 = time_CreateMonster01 + 0.1
 
-    if time_CreateMonster >= time_UpdateCreateMonster:
+    if time_CreateMonster01 >= time_UpdateCreateMonster01:
         for n in range(random.randint(0, 2 + 1), random.randint(3, 5 + 1)):
             PosX = Pos_CreateX + Pos_OffsetX * n
+            Monster_Hp = 100
+            Monster_Speed = 3
+            Monster_Exp = 50
             # x, y, scaleX, scaleY, hp, speed, radius, exp, filename
-            GameObject = Monster.CMonster(PosX, Pos_CreateY, 114, 76, 100, 3, 25, 100, "Enemy01.png")
+            GameObject = Monster.CMonster(PosX, Pos_CreateY, 114, 76, Monster_Hp, Monster_Speed, Monster_Exp, 100, "Enemy01.png")
 
             ObjectMgr.Add_GameObject(GameObject, "Monster")
             pass
