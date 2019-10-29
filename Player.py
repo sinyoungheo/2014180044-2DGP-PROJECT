@@ -7,7 +7,7 @@ import Effect
 # 자석 아이템.
 bIsMagnet = False
 time_magnet = 0.0
-time_update_magnet = 15.0
+time_update_magnet = 30.0
 
 
 class CPlayer:
