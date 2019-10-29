@@ -4,6 +4,11 @@ import PlayerBullet
 import ObjectMgr
 import Effect
 
+# 자석 아이템.
+bIsMagnet = False
+time_magnet = 0.0
+time_update_magnet = 15.0
+
 
 class CPlayer:
     def __init__(self):
@@ -80,6 +85,9 @@ class CPlayer:
         # LevelUp Check
         self.Check_LevelUp()
 
+        # Item Magnet
+        self.Item_Magnet()
+
         return 0
         pass
 
@@ -136,5 +144,18 @@ class CPlayer:
             self.bullet_filename = "bullet_Lv7.png"
             self.bullet_radius = 64
             pass
+
+        pass
+
+    def Item_Magnet(self):
+        global bIsMagnet
+        global time_magnet
+        global time_update_magnet
+
+        if bIsMagnet:
+            time_magnet += 0.1
+            if time_magnet >= time_update_magnet:
+                time_magnet = 0.0
+                bIsMagnet = False
 
         pass

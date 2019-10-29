@@ -1,7 +1,24 @@
 from pico2d import *
 import random
+import math
+import Player
 
-IsMagnetTime = False
+
+def Cal_Degree(ax, bx, ay, by):
+    w = ax - bx
+    h = ay - by
+    d = math.sqrt(pow(w, 2) + pow(h, 2))
+
+    angle = math.acos(w / d)
+
+    if by > ay:
+        angle = angle * -1
+
+    return angle * 180.0 / math.pi
+
+
+def Cal_Distance(Dst, Src):
+    return math.sqrt(pow(Dst.x - Src.x, 2) + pow(Dst.y - Src.y, 2))
 
 
 class CItem:
@@ -57,10 +74,13 @@ class CItem:
             return -1
 
         self.y -= self.speed
-        self.speed += 0.4
+        self.speed += 0.3
 
         if self.y <= 0:
             self.IsDead = True
+
+        # 자석 아이템 효과
+        self.Magnet()
 
         pass
 
@@ -89,6 +109,20 @@ class CItem:
             index = 8
 
         CItem.image[index].draw(self.x, self.y, self.scaleX, self.scaleY)
+        pass
+
+    ##################################################################################################################
+
+    def Magnet(self):
+        if Player.bIsMagnet:
+            # Target을 향해 이동.
+            if self.target is not None:
+                Dist = Cal_Distance(self, self.target)
+                if Dist < 800.0:
+                    Angle = Cal_Degree(self.x, self.target.x, self.y, self.target.y)
+                    self.x -= math.cos(Angle * math.pi / 180.0) * 14.0
+                    self.y -= math.sin(Angle * math.pi / 180.0) * 14.0
+                pass
         pass
 
     pass

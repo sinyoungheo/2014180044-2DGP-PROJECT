@@ -2,6 +2,7 @@ import ObjectMgr
 import math
 import Effect
 import Item
+import Player
 import random
 
 # Random Item 생성.
@@ -18,7 +19,7 @@ for n in range(0, 15):
 random.shuffle(Lst_CoinLottery)
 
 Lst_ItemLottery = []
-for n in range(0, 70):
+for n in range(0, 100):
     Lst_ItemLottery.append(0)   # 꽝
 for n in range(0, 15):
     Lst_ItemLottery.append(1)   # dual shot
@@ -28,7 +29,7 @@ for n in range(0, 15):
     Lst_ItemLottery.append(3)   # formation
 for n in range(0, 15):
     Lst_ItemLottery.append(4)   # invincible
-for n in range(0, 15):
+for n in range(0, 150):
     Lst_ItemLottery.append(5)   # magnet
 
 random.shuffle(Lst_ItemLottery)
@@ -132,12 +133,17 @@ def Collision_Player_Item(DstLst, SrcLst):
                 # Item == Coin01
                 if Src.filename == "item_coin0.png":
                     Dst.coin_cnt += 1
-                if Src.filename == "item_coin1.png":
+                elif Src.filename == "item_coin1.png":
                     Dst.coin_cnt += 10
-                if Src.filename == "item_coin2.png":
+                elif Src.filename == "item_coin2.png":
                     Dst.coin_cnt += 50
-                if Src.filename == "item_coin3.png":
+                elif Src.filename == "item_coin3.png":
                     Dst.coin_cnt += 100
+
+                # Item
+                if Src.filename == "item_magnet.png":
+                    Player.bIsMagnet = True
+                    Player.time_magnet = 0.0
 
                 pass
     pass
