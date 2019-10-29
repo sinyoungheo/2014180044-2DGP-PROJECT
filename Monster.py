@@ -3,6 +3,19 @@ import random
 import Item
 import ObjectMgr
 
+# # Random Item 생성.
+# Lst_CoinLottery = []
+# for n in range(0, 50):
+#     Lst_CoinLottery.append(0)
+# for n in range(0, 30):
+#     Lst_CoinLottery.append(1)
+# for n in range(0, 20):
+#     Lst_CoinLottery.append(2)
+# for n in range(0, 10):
+#     Lst_CoinLottery.append(3)
+#
+# random.shuffle(Lst_CoinLottery)
+
 
 class CMonster:
     image = [None, None, None]
@@ -32,11 +45,18 @@ class CMonster:
         pass
 
     def Update(self):
+        global Lst_CoinLottery
+
         if self.IsDead:
-            # Item 생성.
-            # PosX, PosY, CX, CY, Radius, ScaleX, ScaleY, Target, FileName
-            GameObject = Item.CItem(self.x, self.y, 64, 64, 16, 64, 64, None, "item_coin0.png")
-            ObjectMgr.Add_GameObject(GameObject, "Item")
+            # # Item 생성.
+            # coin_num = random.choice(Lst_CoinLottery)
+            # FileName = ""
+            # if coin_num == 0:
+            #     FileName = "item_coin0.png"
+            #
+            # # PosX, PosY, CX, CY, Radius, ScaleX, ScaleY, Target, FileName
+            # GameObject = Item.CItem(self.x, self.y, 64, 64, 16, 64, 64, None, FileName)
+            # ObjectMgr.Add_GameObject(GameObject, "Item")
             return -1
 
         # Animation
