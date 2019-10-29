@@ -38,6 +38,10 @@ class CPlayer:
             if event.type == SDL_KEYUP:
                 if event.key == SDLK_LEFT or event.key == SDLK_RIGHT:
                     self.dir = 0
+
+            if event.type == SDL_KEYDOWN:
+                if event.key == SDLK_1:
+                    self.exp += 1000
                 pass
 
         pass
