@@ -11,6 +11,14 @@ image = None
 time_CreateMonster01 = 10.0
 time_UpdateCreateMonster01 = 10.0
 
+# Monster02 생성 시간
+time_CreateMonster02 = 7.5
+time_UpdateCreateMonster02 = 15.0
+
+# Monster03 생성 시간
+time_CreateMonster03 = 9.0
+time_UpdateCreateMonster03 = 9.0
+
 # Monster 생성 위치.
 Pos_CreateX = 52
 Pos_CreateY = 960
@@ -51,12 +59,19 @@ def Update():
     global PlayTime
     PlayTime = get_time()
 
+    print(PlayTime)
+
     # Object Update
     ObjectMgr.Update()
 
     # Monster 생성.
     global time_CreateMonster01
+    global time_CreateMonster02
+    global time_CreateMonster03
     global time_UpdateCreateMonster01
+    global time_UpdateCreateMonster02
+    global time_UpdateCreateMonster03
+
     global Pos_CreateX
     global Pos_CreateY
     global Pos_OffsetX
@@ -65,7 +80,7 @@ def Update():
     global Monster_Exp
 
     # Monster 01 생성.
-    time_CreateMonster01 = time_CreateMonster01 + 0.1
+    time_CreateMonster01 += 0.1
 
     if time_CreateMonster01 >= time_UpdateCreateMonster01:
         for n in range(random.randint(0, 2 + 1), random.randint(3, 5 + 1)):
@@ -74,20 +89,54 @@ def Update():
             Monster_Speed = 3
             Monster_Exp = 50
             # x, y, scaleX, scaleY, hp, speed, radius, exp, filename
-            GameObject = Monster.CMonster(PosX, Pos_CreateY, 114, 76, Monster_Hp, Monster_Speed, Monster_Exp, 100, "Enemy01.png")
+            GameObject = Monster.CMonster(PosX, Pos_CreateY, 114, 76, Monster_Hp, Monster_Speed, 25, Monster_Exp, "Enemy01.png")
 
             ObjectMgr.Add_GameObject(GameObject, "Monster")
             pass
 
         Pos_CreateX = 76
-        time_CreateMonster = 0.0
+        time_CreateMonster01 = 0.0
 
     # Monster 02 생성
-    if PlayTime >= 30.0:
+    Pos_CreateX = 76
+    if PlayTime >= 20.0:
+        time_CreateMonster02 += 0.1
+
+        if time_CreateMonster02 >= time_UpdateCreateMonster02:
+            for n in range(random.randint(0, 2 + 1), random.randint(3, 5 + 1)):
+                PosX = Pos_CreateX + Pos_OffsetX * n
+                Monster_Hp = 250
+                Monster_Speed = 5
+                Monster_Exp = 150
+                # x, y, scaleX, scaleY, hp, speed, radius, exp, filename
+                GameObject = Monster.CMonster(PosX, Pos_CreateY, 114, 76, Monster_Hp, Monster_Speed, 25, Monster_Exp, "Enemy02.png")
+
+                ObjectMgr.Add_GameObject(GameObject, "Monster")
+                pass
+
+            Pos_CreateX = 76
+            time_CreateMonster02 = 0.0
         pass
 
     # Monster 03 생성
-    if PlayTime >= 60.0:
+    Pos_CreateX = 76
+    if PlayTime >= 30.0:
+        time_CreateMonster03 += 0.1
+
+        if time_CreateMonster03 >= time_UpdateCreateMonster03:
+            for n in range(random.randint(0, 2 + 1), random.randint(3, 5 + 1)):
+                PosX = Pos_CreateX + Pos_OffsetX * n
+                Monster_Hp = 500
+                Monster_Speed = 6
+                Monster_Exp = 300
+                # x, y, scaleX, scaleY, hp, speed, radius, exp, filename
+                GameObject = Monster.CMonster(PosX, Pos_CreateY, 114, 76, Monster_Hp, Monster_Speed, 25, Monster_Exp, "Enemy03.png")
+
+                ObjectMgr.Add_GameObject(GameObject, "Monster")
+                pass
+
+            Pos_CreateX = 76
+            time_CreateMonster03 = 0.0
         pass
 
     pass
