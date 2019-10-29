@@ -19,6 +19,7 @@ import ObjectMgr
 
 class CMonster:
     image = [None, None, None]
+    image_HpBar = None
 
     def __init__(self, PosX, PosY, ScaleX, ScaleY, Hp, Speed, Radius, Exp, FileName):
         if CMonster.image[0] is None:
@@ -29,6 +30,9 @@ class CMonster:
 
         if CMonster.image[2] is None:
             CMonster.image[2] = load_image("Resource/Monster/Enemy03.png")
+
+        if CMonster.image_HpBar is None:
+            CMonster.image_HpBar = load_image("Resource/UI/MonsterHpBar_2.png")
 
         self.IsDead = False
         self.frame = random.randint(0, 3)
@@ -41,6 +45,15 @@ class CMonster:
         self.exp = Exp
         self.filename = FileName
 
+        # HpBar 변수.
+        self.hpRadio = 0.0
+        self.originCX = 70
+        self.hpCX = 70.0
+        self.hpCY = 11
+        self.hpPosX = self.x
+
+        pass
+
     def Handle_Events(self):
         pass
 
@@ -48,15 +61,6 @@ class CMonster:
         global Lst_CoinLottery
 
         if self.IsDead:
-            # # Item 생성.
-            # coin_num = random.choice(Lst_CoinLottery)
-            # FileName = ""
-            # if coin_num == 0:
-            #     FileName = "item_coin0.png"
-            #
-            # # PosX, PosY, CX, CY, Radius, ScaleX, ScaleY, Target, FileName
-            # GameObject = Item.CItem(self.x, self.y, 64, 64, 16, 64, 64, None, FileName)
-            # ObjectMgr.Add_GameObject(GameObject, "Item")
             return -1
 
         # Animation
@@ -72,7 +76,13 @@ class CMonster:
 
         # Check Hp
         if self.hp <= 0:
+            self.hp = 0
             self.IsDead = True
+
+        # Hp Ratio
+        self.hpRadio = self.hp / self.max_hp
+        self.hpCX = self.originCX * self.hpRadio
+        self.hpPosX = self.x - (self.originCX - self.hpCX) / 2
 
         return 0
         pass
@@ -89,6 +99,7 @@ class CMonster:
 
         if not self.IsDead:
             CMonster.image[index].clip_draw(self.frame * 76, 0, 76, 51, self.x, self.y, self.scaleX, self.scaleY)
+            CMonster.image_HpBar.clip_draw(0, 0, int(self.hpCX), self.hpCY, self.hpPosX, self.y - 50)
         pass
 
     def DeadObject(self):
