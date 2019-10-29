@@ -18,7 +18,7 @@ class CItem:
         self.time_Magnet = 0
         self.time_UpdateMagnet = 5
 
-        self.speed = -random.randint(3, 8)
+        self.speed = -random.randint(3, 9)
 
         if CItem.image[0] is None:
             CItem.image[0] = load_image("Resource/Item/item_coin0.png")

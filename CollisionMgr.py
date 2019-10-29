@@ -103,6 +103,14 @@ def Collision_Monster_PLBullet(DstLst, SrcLst, Player):
                             ItemFileName = "item_egg.png"
                         elif item_num == 3:
                             ItemFileName = "item_formation.png"
+                        elif item_num == 4:
+                            ItemFileName = "item_invincible.png"
+                        elif item_num == 5:
+                            ItemFileName = "item_magnet.png"
+
+                        # PosX, PosY, CX, CY, Radius, ScaleX, ScaleY, Target, FileName
+                        GameObject = Item.CItem(Dst.x, Dst.y, 128, 128, 32, 64, 64, Player, ItemFileName)
+                        ObjectMgr.Add_GameObject(GameObject, "Item")
 
                         pass
                 pass
