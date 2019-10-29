@@ -4,7 +4,6 @@ import ObjectMgr
 import Player
 import Monster
 
-
 # 배경 이미지
 image = None
 
@@ -15,6 +14,9 @@ time_UpdateCreateMonster = 10.0
 Pos_CreateX = 52
 Pos_CreateY = 960
 Pos_OffsetX = 114
+
+# Game Play Time
+PlayTime = 0.0
 
 
 def Enter():
@@ -39,6 +41,10 @@ def Handle_Events():
 
 
 def Update():
+    # Game Play Time
+    global PlayTime
+    PlayTime = get_time()
+
     # Object Update
     ObjectMgr.Update()
 
@@ -65,8 +71,12 @@ def Update():
         time_CreateMonster = 0.0
 
     # Monster 02 생성
+    if PlayTime >= 30.0:
+        pass
 
     # Monster 03 생성
+    if PlayTime >= 60.0:
+        pass
 
     pass
 
