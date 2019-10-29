@@ -25,6 +25,8 @@ class CPlayer:
         # 탄환 이미지
         self.bullet_filename = "bullet_Lv1.png"
         self.bullet_radius = 32
+        # 코인 개수
+        self.coin_cnt = 0
 
     def Handle_Events(self):
         if keyboard.is_pressed('left'):

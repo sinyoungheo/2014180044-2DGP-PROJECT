@@ -52,7 +52,10 @@ def Update():
     global LstPlayer
     global LstMonster
     global LstPlayerBullet
+    global LstItem
+
     CollisionMgr.Collision_Monster_PLBullet(LstMonster, LstPlayerBullet, LstPlayer[0])
+    CollisionMgr.Collision_Player_Item(LstPlayer, LstItem)
 
     pass
 
