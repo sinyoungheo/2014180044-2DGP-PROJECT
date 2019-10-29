@@ -20,6 +20,7 @@ import ObjectMgr
 class CMonster:
     image = [None, None, None]
     image_HpBar = None
+    image_HpBarEmpty = None
 
     def __init__(self, PosX, PosY, ScaleX, ScaleY, Hp, Speed, Radius, Exp, FileName):
         if CMonster.image[0] is None:
@@ -30,6 +31,9 @@ class CMonster:
 
         if CMonster.image[2] is None:
             CMonster.image[2] = load_image("Resource/Monster/Enemy03.png")
+
+        if CMonster.image_HpBarEmpty is None:
+            CMonster.image_HpBarEmpty = load_image("Resource/UI/MonsterHpBarEmpty_2.png")
 
         if CMonster.image_HpBar is None:
             CMonster.image_HpBar = load_image("Resource/UI/MonsterHpBar_2.png")
@@ -99,6 +103,7 @@ class CMonster:
 
         if not self.IsDead:
             CMonster.image[index].clip_draw(self.frame * 76, 0, 76, 51, self.x, self.y, self.scaleX, self.scaleY)
+            CMonster.image_HpBarEmpty.clip_draw(0, 0, 72, 10, self.x, self.y - 50)
             CMonster.image_HpBar.clip_draw(0, 0, int(self.hpCX), self.hpCY, self.hpPosX, self.y - 50)
         pass
 
