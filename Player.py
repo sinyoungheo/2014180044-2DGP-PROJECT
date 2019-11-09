@@ -159,3 +159,4 @@ class CPlayer:
                 bIsMagnet = False
 
         pass
+ 
