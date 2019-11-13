@@ -21,14 +21,19 @@ random.shuffle(Lst_CoinLottery)
 Lst_ItemLottery = []
 for n in range(0, 100):
     Lst_ItemLottery.append(0)   # 꽝
+
 for n in range(0, 15):
     Lst_ItemLottery.append(1)   # dual shot
-for n in range(0, 15):
+
+for n in range(0, 150):
     Lst_ItemLottery.append(2)   # egg
+
 for n in range(0, 15):
     Lst_ItemLottery.append(3)   # formation
+
 for n in range(0, 15):
     Lst_ItemLottery.append(4)   # invincible
+
 for n in range(0, 15):
     Lst_ItemLottery.append(5)   # magnet
 
@@ -149,6 +154,9 @@ def Collision_Player_Item(DstLst, SrcLst):
                 if Src.filename == "item_dualshot.png":
                     Player.bIsBulletPowerUp = True
                     Player.time_bullet_power_up = 0.0
+
+                if Src.filename == "item_egg.png":
+                    Player.pet_cnt += 1
 
                 pass
     pass

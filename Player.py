@@ -104,6 +104,9 @@ class CPlayer:
         # Item Magnet
         self.Item_Magnet()
 
+        # Create Pet
+        self.Create_Pet()
+
         return 0
         pass
 
@@ -218,12 +221,23 @@ class CPlayer:
 
         pass
 
-    pass
-
-    def Crate_Pet(self):
+    def Create_Pet(self):
         global bIsCreateFirst
         global bIsCreateSecond
         global pet_cnt
         global pet_max_cnt
+
+        if pet_cnt >= pet_max_cnt:
+            pet_cnt = pet_max_cnt
+
+        if pet_cnt == 1:
+            if False == bIsCreateFirst:
+                ObjectMgr.Add_GameObject(PlayerPet.CPlayerPet(self, 1, "pet01.png"), "PlayerPet")
+                bIsCreateFirst = True
+
+        if pet_cnt == 2:
+            if False == bIsCreateSecond:
+                ObjectMgr.Add_GameObject(PlayerPet.CPlayerPet(self, -1, "pet02.png"), "PlayerPet")
+                bIsCreateSecond = True
 
         pass
