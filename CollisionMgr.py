@@ -21,7 +21,7 @@ random.shuffle(Lst_CoinLottery)
 Lst_ItemLottery = []
 for n in range(0, 100):
     Lst_ItemLottery.append(0)   # 꽝
-for n in range(0, 15):
+for n in range(0, 300):
     Lst_ItemLottery.append(1)   # dual shot
 for n in range(0, 15):
     Lst_ItemLottery.append(2)   # egg
@@ -144,6 +144,10 @@ def Collision_Player_Item(DstLst, SrcLst):
                 if Src.filename == "item_magnet.png":
                     Player.bIsMagnet = True
                     Player.time_magnet = 0.0
+
+                if Src.filename == "item_dualshot.png":
+                    Player.bIsBulletPowerUp = True
+                    Player.time_bullet_power_up = 0.0
 
                 pass
     pass

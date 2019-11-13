@@ -10,9 +10,15 @@ bIsMagnet = False
 time_magnet = 0.0
 time_update_magnet = 3.0
 
+# 탄막 강화 아이템.
+bIsBulletPowerUp = False
+time_bullet_power_up = 0.0
+time_update_bullet_power_up = 5.0
+
 TIME_PER_ACTION = 0.2
 ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
 FRAMES_PER_ACTION = 4
+
 
 class CPlayer:
     def __init__(self):
@@ -80,12 +86,7 @@ class CPlayer:
         self.Change_Bullet()
 
         # Create Bullet
-        self.time_CreateBullet = self.time_CreateBullet + 0.1
-        if self.time_CreateBullet >= self.time_UpdateCreateBullet:
-            # x, y, Damage, Radius, FileName
-            GameObject = PlayerBullet.CPlayerBullet(self.x, self.y, self.damage, self.bullet_radius, self.bullet_filename)
-            ObjectMgr.Add_GameObject(GameObject, "PlayerBullet")
-            self.time_CreateBullet = 0.0
+        self.Create_Bullet()
 
         # LevelUp Check
         self.Check_LevelUp()
@@ -159,9 +160,46 @@ class CPlayer:
 
         if bIsMagnet:
             time_magnet += GameFramework.frame_time
-            #print(time_magnet)
+            # print(time_magnet)
             if time_magnet >= time_update_magnet:
                 time_magnet = 0.0
                 bIsMagnet = False
+
+    def Create_Bullet(self):
+        global bIsBulletPowerUp
+        global time_bullet_power_up
+        global time_update_bullet_power_up
+
+        # 총알 생성 시간 갱신.
+        self.time_CreateBullet = self.time_CreateBullet + 0.1
+
+        if self.time_CreateBullet >= self.time_UpdateCreateBullet:
+            if not bIsBulletPowerUp:
+                # x, y, Damage, Radius, FileName
+                GameObject = PlayerBullet.CPlayerBullet(self.x, self.y, self.damage, self.bullet_radius, self.bullet_filename)
+                ObjectMgr.Add_GameObject(GameObject, "PlayerBullet")
+                self.time_CreateBullet = 0.0
+            else:
+                time_bullet_power_up += GameFramework.frame_time
+                if time_bullet_power_up >= time_update_bullet_power_up:
+                    time_bullet_power_up = 0.0
+                    bIsBulletPowerUp = False
+
+                # x, y, Damage, Radius, FileName
+                GameObject = PlayerBullet.CPlayerBullet(self.x, self.y, self.damage, self.bullet_radius, self.bullet_filename)
+                ObjectMgr.Add_GameObject(GameObject, "PlayerBullet")
+
+                # x, y, Damage, Radius, FileName
+                GameObject = PlayerBullet.CPlayerBullet(self.x - 60, self.y - 20, self.damage, self.bullet_radius,self.bullet_filename)
+                ObjectMgr.Add_GameObject(GameObject, "PlayerBullet")
+
+                # x, y, Damage, Radius, FileName
+                GameObject = PlayerBullet.CPlayerBullet(self.x + 60, self.y - 20, self.damage, self.bullet_radius, self.bullet_filename)
+                ObjectMgr.Add_GameObject(GameObject, "PlayerBullet")
+
+                self.time_CreateBullet = 0.0
+
+        pass
+
 
         pass
