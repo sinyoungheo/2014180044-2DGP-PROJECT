@@ -4,20 +4,20 @@ import CollisionMgr
 ObjLst = []
 
 # Object
+LstPlayerLaser = []
 LstPlayer = []
 LstPlayerPet = []
 LstPlayerBullet = []
-LstPlayerLaser = []
 LstMonster = []
 LstMonsterBullet = []
 LstItem = []
 LstEffect = []
 LstUI = []
 
+ObjLst.append(LstPlayerLaser)
 ObjLst.append(LstPlayer)
 ObjLst.append(LstPlayerPet)
 ObjLst.append(LstPlayerBullet)
-ObjLst.append(LstPlayerLaser)
 ObjLst.append(LstMonster)
 ObjLst.append(LstMonsterBullet)
 ObjLst.append(LstItem)

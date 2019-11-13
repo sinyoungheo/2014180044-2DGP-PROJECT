@@ -20,9 +20,9 @@ time_update_bullet_power_up = 4.0
 # 레이저 아이템 - item_invincible
 bIsLaser = False
 time_laser = 0.0
-time_update_laser = 5.0             # 레이저 아이템 지속 시간
+time_update_laser = 2.0             # 레이저 아이템 지속 시간
 time_create_laser = 0.0
-time_update_create_laser = 0.1      # 레이저 생성 간격.
+time_update_create_laser = 0.2      # 레이저 생성 간격.
 
 # 새끼 용
 bIsCreateFirst = False
@@ -78,10 +78,10 @@ class CPlayer:
                 if event.key == SDLK_1:
                     self.exp += 1000
 
-                if event.key == SDLK_2:
-                    GameObject = PlayerLaser.CPlayerLaser()
-                    ObjectMgr.Add_GameObject(GameObject, "PlayerLaser")
-                    pass
+                # if event.key == SDLK_2:
+                #     GameObject = PlayerLaser.CPlayerLaser(self.damage / 10)
+                #     ObjectMgr.Add_GameObject(GameObject, "PlayerLaser")
+                #     pass
                 pass
 
         pass
@@ -265,6 +265,20 @@ class CPlayer:
         global time_create_laser
         global time_update_create_laser     # 레이저 생성 간격.
 
-        
+        if bIsLaser:
+            time_laser += GameFramework.frame_time
+            if time_laser >= time_update_laser:
+                time_laser = 0.0
+                bIsLaser = False
+
+            # 레이저 생성
+            time_create_laser += 0.1
+            if time_create_laser >= time_update_create_laser:
+                GameObject = PlayerLaser.CPlayerLaser(self.damage / 10)
+                ObjectMgr.Add_GameObject(GameObject, "PlayerLaser")
+
+                time_create_laser = 0.0
+                pass
+
 
         pass
