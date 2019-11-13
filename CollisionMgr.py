@@ -31,7 +31,7 @@ for n in range(0, 15):
 for n in range(0, 15):
     Lst_ItemLottery.append(3)   # formation
 
-for n in range(0, 150):
+for n in range(0, 15):
     Lst_ItemLottery.append(4)   # invincible
 
 for n in range(0, 15):
