@@ -32,9 +32,16 @@ class CPlayerPet:
         self.time_CreateBullet = self.time_CreateBullet + 0.1
 
         if self.time_CreateBullet >= self.time_UpdateCreateBullet:
+            filename = ""
+            if self.filename == "pet01.png":
+                filename = "pet_bullet_5.png"
+            else:
+                filename = "pet_bullet_3.png"
+
              # x, y, Damage, Radius, FileName1
-            GameObject = PlayerBullet.CPlayerBullet(self.x, self.y, self.damage, self.bullet_radius, self.bullet_filename)
+            GameObject = PlayerBullet.CPlayerBullet(self.x, self.y, self.target.damage, 32, filename)
             ObjectMgr.Add_GameObject(GameObject, "PlayerBullet")
+
             self.time_CreateBullet = 0.0
 
         pass

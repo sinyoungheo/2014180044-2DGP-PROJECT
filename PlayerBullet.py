@@ -28,7 +28,7 @@ class CPlayerBullet:
             CPlayerBullet.image[6] = load_image("Resource/Bullet/bullet_Lv7.png")
 
         if CPlayerBullet.image[7] is None:
-            CPlayerBullet.image[7] = load_image("Resource/Bullet/pet_bullet_2.png")
+            CPlayerBullet.image[7] = load_image("Resource/Bullet/pet_bullet_5.png")
 
         if CPlayerBullet.image[8] is None:
             CPlayerBullet.image[8] = load_image("Resource/Bullet/pet_bullet_3.png")
@@ -76,7 +76,7 @@ class CPlayerBullet:
             index = 5
         if self.filename == "bullet_Lv7.png":
             index = 6
-        if self.filename == "pet_bullet_2.png":
+        if self.filename == "pet_bullet_5.png":
             index = 7
         if self.filename == "pet_bullet_3.png":
             index = 8
