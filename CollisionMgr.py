@@ -57,11 +57,23 @@ def Check_Collision_Laser(Dst, Src):
     # Dst - Monster
     # Src - Player Laser
 
-    minX = Dst.x - Dst.radius
-    maxX = Dst.x + Dst.radius
+    DstMinX = Dst.x - Dst.radius
+    DstMaxX = Dst.x + Dst.radius
 
-    # if
-    
+    SrcMinX = Src.x - Src.scaleX / 2.0
+    SrcMaxX = Src.x + Src.scaleX / 2.0
+
+    if SrcMaxX >= DstMinX >= SrcMinX:
+        return True
+
+    if SrcMinX <= DstMaxX <= SrcMaxX:
+        return True
+
+    if DstMinX <= SrcMinX <= DstMaxX and DstMinX <= SrcMaxX <= DstMaxX:
+        return True
+
+    return False
+
     pass
 
 
@@ -146,6 +158,56 @@ def Collision_Monster_PLLaser(DstLst, SrcLst, Player):
 
     for Dst in DstLst:
         for Src in SrcLst:
+            if Check_Collision_Laser(Dst, Src):
+                # Monster Hp 감소
+                Dst.hp -= Src.damage
+                # Monster 사망 시 Player Exp 증가.
+                if Dst.hp <= 0:
+                    Dst.IsDead = True
+                    Player.exp += Dst.exp
+
+                    # Monster 사망 Effect
+                    # PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX, ScaleY, FileName,
+                    # time_per_action, frames_per_action
+                    GameObj = Effect.CEffect(Dst.x, Dst.y, 76, 51, 0.3, False, False, 4, 2.4, 114, 76, "dust.png", 0.5,
+                                             4.0)
+                    ObjectMgr.Add_GameObject(GameObj, "Effect")
+
+                    # Item - Coin 생성.
+                    coin_num = random.choice(Lst_CoinLottery)
+                    FileName = ""
+                    if coin_num == 0:
+                        FileName = "item_coin0.png"
+                    elif coin_num == 1:
+                        FileName = "item_coin1.png"
+                    elif coin_num == 2:
+                        FileName = "item_coin2.png"
+                    elif coin_num == 3:
+                        FileName = "item_coin3.png"
+
+                    # PosX, PosY, CX, CY, Radius, ScaleX, ScaleY, Target, FileName
+                    GameObject = Item.CItem(Dst.x, Dst.y, 64, 64, 16, 64, 64, Player, FileName)
+                    ObjectMgr.Add_GameObject(GameObject, "Item")
+
+                    # Item 생성
+                    item_num = random.choice(Lst_ItemLottery)
+                    ItemFileName = ""
+                    if item_num != 0:
+                        if item_num == 1:
+                            ItemFileName = "item_dualshot.png"
+                        elif item_num == 2:
+                            ItemFileName = "item_egg.png"
+                        elif item_num == 3:
+                            ItemFileName = "item_formation.png"
+                        elif item_num == 4:
+                            ItemFileName = "item_invincible.png"
+                        elif item_num == 5:
+                            ItemFileName = "item_magnet.png"
+
+                        # PosX, PosY, CX, CY, Radius, ScaleX, ScaleY, Target, FileName
+                        GameObject = Item.CItem(Dst.x, Dst.y, 128, 128, 32, 64, 64, Player, ItemFileName)
+                        ObjectMgr.Add_GameObject(GameObject, "Item")
+
             pass
 
     pass

@@ -61,6 +61,7 @@ def Update():
     global LstItem
 
     CollisionMgr.Collision_Monster_PLBullet(LstMonster, LstPlayerBullet, LstPlayer[0])
+    CollisionMgr.Collision_Monster_PLLaser(LstMonster,LstPlayerLaser, LstPlayer[0])
     CollisionMgr.Collision_Player_Item(LstPlayer, LstItem)
 
     pass
