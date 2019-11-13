@@ -25,13 +25,13 @@ for n in range(0, 100):
 for n in range(0, 15):
     Lst_ItemLottery.append(1)   # dual shot
 
-for n in range(0, 150):
+for n in range(0, 15):
     Lst_ItemLottery.append(2)   # egg
 
 for n in range(0, 15):
     Lst_ItemLottery.append(3)   # formation
 
-for n in range(0, 15):
+for n in range(0, 150):
     Lst_ItemLottery.append(4)   # invincible
 
 for n in range(0, 15):
@@ -49,6 +49,19 @@ def Check_Collision(Dst, Src):
         return True
     else:
         return False
+    pass
+
+
+# Laser 충돌 검사.
+def Check_Collision_Laser(Dst, Src):
+    # Dst - Monster
+    # Src - Player Laser
+
+    minX = Dst.x - Dst.radius
+    maxX = Dst.x + Dst.radius
+
+    # if
+    
     pass
 
 
@@ -126,6 +139,18 @@ def Collision_Monster_PLBullet(DstLst, SrcLst, Player):
     pass
 
 
+# Monster - PlayerLaser 충돌
+def Collision_Monster_PLLaser(DstLst, SrcLst, Player):
+    # DstLst - Monster
+    # SrcLst - Player Laser
+
+    for Dst in DstLst:
+        for Src in SrcLst:
+            pass
+
+    pass
+
+
 # Player & Item 충돌.
 def Collision_Player_Item(DstLst, SrcLst):
     # DstLst - Player
@@ -157,6 +182,10 @@ def Collision_Player_Item(DstLst, SrcLst):
 
                 if Src.filename == "item_egg.png":
                     Player.pet_cnt += 1
+
+                if Src.filename == "item_invincible.png":
+                    Player.bIsLaser = True
+                    Player.time_laser = 0.0
 
                 pass
     pass
