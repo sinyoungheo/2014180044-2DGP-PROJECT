@@ -25,7 +25,7 @@ class CPlayerPet:
         pass
 
     def Update(self):
-
+        self.x, self.y = self.target.x - 80, self.target.y - 20
         pass
 
     def Render(self):

@@ -4,18 +4,21 @@ import PlayerBullet
 import ObjectMgr
 import Effect
 import GameFramework
+import PlayerPet
 
 # 자석 아이템.
 bIsMagnet = False
 time_magnet = 0.0
-time_update_magnet = 3.0
+time_update_magnet = 4.0
 
 # 탄막 강화 아이템.
 bIsBulletPowerUp = False
 time_bullet_power_up = 0.0
-time_update_bullet_power_up = 3.0
+time_update_bullet_power_up = 4.0
 
 # 새끼 용
+bIsCreateFirst = False
+bIsCreateSecond = False
 pet_cnt = 0
 pet_max_cnt = 2
 
@@ -47,6 +50,8 @@ class CPlayer:
         self.bullet_radius = 32
         # 코인 개수
         self.coin_cnt = 0
+        # # 새끼용 생성
+        # ObjectMgr.Add_GameObject(PlayerPet.CPlayerPet(self, 1, "pet01"), "PlayerPet")
 
     def Handle_Events(self):
         if keyboard.is_pressed('left'):
@@ -159,6 +164,7 @@ class CPlayer:
 
         pass
 
+    # 자석 아이템.
     def Item_Magnet(self):
         global bIsMagnet
         global time_magnet
@@ -171,6 +177,7 @@ class CPlayer:
                 time_magnet = 0.0
                 bIsMagnet = False
 
+    # 듀얼샷 아이템.
     def Create_Bullet(self):
         global bIsBulletPowerUp
         global time_bullet_power_up
@@ -182,7 +189,8 @@ class CPlayer:
         if self.time_CreateBullet >= self.time_UpdateCreateBullet:
             if not bIsBulletPowerUp:
                 # x, y, Damage, Radius, FileName
-                GameObject = PlayerBullet.CPlayerBullet(self.x, self.y, self.damage, self.bullet_radius, self.bullet_filename)
+                GameObject = PlayerBullet.CPlayerBullet(self.x, self.y, self.damage, self.bullet_radius,
+                                                        self.bullet_filename)
                 ObjectMgr.Add_GameObject(GameObject, "PlayerBullet")
                 self.time_CreateBullet = 0.0
             else:
@@ -192,20 +200,30 @@ class CPlayer:
                     bIsBulletPowerUp = False
 
                 # x, y, Damage, Radius, FileName
-                GameObject = PlayerBullet.CPlayerBullet(self.x, self.y, self.damage, self.bullet_radius, self.bullet_filename)
+                GameObject = PlayerBullet.CPlayerBullet(self.x, self.y, self.damage, self.bullet_radius,
+                                                        self.bullet_filename)
                 ObjectMgr.Add_GameObject(GameObject, "PlayerBullet")
 
                 # x, y, Damage, Radius, FileName
-                GameObject = PlayerBullet.CPlayerBullet(self.x - 60, self.y - 20, self.damage, self.bullet_radius,self.bullet_filename)
+                GameObject = PlayerBullet.CPlayerBullet(self.x - 60, self.y - 20, self.damage, self.bullet_radius,
+                                                        self.bullet_filename)
                 ObjectMgr.Add_GameObject(GameObject, "PlayerBullet")
 
                 # x, y, Damage, Radius, FileName
-                GameObject = PlayerBullet.CPlayerBullet(self.x + 60, self.y - 20, self.damage, self.bullet_radius, self.bullet_filename)
+                GameObject = PlayerBullet.CPlayerBullet(self.x + 60, self.y - 20, self.damage, self.bullet_radius,
+                                                        self.bullet_filename)
                 ObjectMgr.Add_GameObject(GameObject, "PlayerBullet")
 
                 self.time_CreateBullet = 0.0
 
         pass
 
+    pass
+
+    def Crate_Pet(self):
+        global bIsCreateFirst
+        global bIsCreateSecond
+        global pet_cnt
+        global pet_max_cnt
 
         pass

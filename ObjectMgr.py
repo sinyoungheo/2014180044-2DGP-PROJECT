@@ -5,6 +5,7 @@ ObjLst = []
 
 # Object
 LstPlayer = []
+LstPlayerPet = []
 LstPlayerBullet = []
 LstMonster = []
 LstMonsterBullet = []
@@ -13,6 +14,7 @@ LstEffect = []
 LstUI = []
 
 ObjLst.append(LstPlayer)
+ObjLst.append(LstPlayerPet)
 ObjLst.append(LstPlayerBullet)
 ObjLst.append(LstMonster)
 ObjLst.append(LstMonsterBullet)
@@ -76,6 +78,7 @@ def Render():
 # GameObject Add
 def Add_GameObject(GameObject, ObjID):
     global LstPlayer
+    global LstPlayerPet
     global LstPlayerBullet
     global LstMonster
     global LstMonsterBullet
@@ -86,6 +89,9 @@ def Add_GameObject(GameObject, ObjID):
     if ObjID == "Player":
         LstPlayer.append(GameObject)
         pass
+
+    if ObjID == "PlayerPet":
+        LstPlayerPet.append(GameObject)
 
     if ObjID == "PlayerBullet":
         LstPlayerBullet.append(GameObject)
