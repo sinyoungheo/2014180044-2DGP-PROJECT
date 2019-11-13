@@ -5,6 +5,7 @@ import ObjectMgr
 import Effect
 import GameFramework
 import PlayerPet
+import PlayerLaser
 
 # 자석 아이템.
 bIsMagnet = False
@@ -15,6 +16,13 @@ time_update_magnet = 4.0
 bIsBulletPowerUp = False
 time_bullet_power_up = 0.0
 time_update_bullet_power_up = 4.0
+
+# 레이저 아이템 - item_invincible
+bIsLaser = False
+time_laser = 0.0
+time_update_laser = 5.0             # 레이저 아이템 지속 시간
+time_create_laser = 0.0
+time_update_create_laser = 0.1      # 레이저 생성 간격.
 
 # 새끼 용
 bIsCreateFirst = False
@@ -69,6 +77,11 @@ class CPlayer:
             if event.type == SDL_KEYDOWN:
                 if event.key == SDLK_1:
                     self.exp += 1000
+
+                if event.key == SDLK_2:
+                    GameObject = PlayerLaser.CPlayerLaser()
+                    ObjectMgr.Add_GameObject(GameObject, "PlayerLaser")
+                    pass
                 pass
 
         pass
@@ -106,6 +119,9 @@ class CPlayer:
 
         # Create Pet
         self.Create_Pet()
+
+        # Create Laser
+        self.Create_Laser()
 
         return 0
         pass
@@ -239,5 +255,16 @@ class CPlayer:
             if False == bIsCreateSecond:
                 ObjectMgr.Add_GameObject(PlayerPet.CPlayerPet(self, -1, "pet02.png"), "PlayerPet")
                 bIsCreateSecond = True
+
+        pass
+
+    def Create_Laser(self):
+        global bIsLaser
+        global time_laser
+        global time_update_laser            # 레이저 아이템 지속 시간
+        global time_create_laser
+        global time_update_create_laser     # 레이저 생성 간격.
+
+        
 
         pass

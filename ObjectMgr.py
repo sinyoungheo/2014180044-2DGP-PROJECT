@@ -7,6 +7,7 @@ ObjLst = []
 LstPlayer = []
 LstPlayerPet = []
 LstPlayerBullet = []
+LstPlayerLaser = []
 LstMonster = []
 LstMonsterBullet = []
 LstItem = []
@@ -16,6 +17,7 @@ LstUI = []
 ObjLst.append(LstPlayer)
 ObjLst.append(LstPlayerPet)
 ObjLst.append(LstPlayerBullet)
+ObjLst.append(LstPlayerLaser)
 ObjLst.append(LstMonster)
 ObjLst.append(LstMonsterBullet)
 ObjLst.append(LstItem)
@@ -95,6 +97,10 @@ def Add_GameObject(GameObject, ObjID):
 
     if ObjID == "PlayerBullet":
         LstPlayerBullet.append(GameObject)
+        pass
+
+    if ObjID == "PlayerLaser":
+        LstPlayerLaser.append(GameObject)
         pass
 
     if ObjID == "Monster":
