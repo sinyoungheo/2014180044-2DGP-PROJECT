@@ -1,5 +1,6 @@
 from pico2d import *
 import random
+import GameFramework
 import Item
 import ObjectMgr
 
@@ -71,7 +72,7 @@ class CMonster:
         self.frame = (self.frame + 1) % 4
 
         # Move
-        self.y = self.y - self.speed
+        self.y = self.y - self.speed * GameFramework.frame_time
 
         # OffSet
         if self.y <= 0:

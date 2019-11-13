@@ -156,7 +156,7 @@ class CPlayer:
 
         if bIsMagnet:
             time_magnet += GameFramework.frame_time
-            print(time_magnet)
+            #print(time_magnet)
             if time_magnet >= time_update_magnet:
                 time_magnet = 0.0
                 bIsMagnet = False

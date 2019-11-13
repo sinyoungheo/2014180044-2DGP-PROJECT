@@ -1,4 +1,5 @@
 from pico2d import *
+import GameFramework
 import random
 import ObjectMgr
 import Player
@@ -86,7 +87,7 @@ def Update():
         for n in range(random.randint(0, 2 + 1), random.randint(3, 5 + 1)):
             PosX = Pos_CreateX + Pos_OffsetX * n
             Monster_Hp = 100
-            Monster_Speed = 3
+            Monster_Speed = 300
             Monster_Exp = 50
             # x, y, scaleX, scaleY, hp, speed, radius, exp, filename
             GameObject = Monster.CMonster(PosX, Pos_CreateY, 114, 76, Monster_Hp, Monster_Speed, 25, Monster_Exp, "Enemy01.png")
@@ -106,7 +107,7 @@ def Update():
             for n in range(random.randint(0, 2 + 1), random.randint(3, 5 + 1)):
                 PosX = Pos_CreateX + Pos_OffsetX * n
                 Monster_Hp = 250
-                Monster_Speed = 5
+                Monster_Speed = 500
                 Monster_Exp = 150
                 # x, y, scaleX, scaleY, hp, speed, radius, exp, filename
                 GameObject = Monster.CMonster(PosX, Pos_CreateY, 114, 76, Monster_Hp, Monster_Speed, 25, Monster_Exp, "Enemy02.png")
@@ -127,7 +128,7 @@ def Update():
             for n in range(random.randint(0, 2 + 1), random.randint(3, 5 + 1)):
                 PosX = Pos_CreateX + Pos_OffsetX * n
                 Monster_Hp = 500
-                Monster_Speed = 6
+                Monster_Speed = 600
                 Monster_Exp = 300
                 # x, y, scaleX, scaleY, hp, speed, radius, exp, filename
                 GameObject = Monster.CMonster(PosX, Pos_CreateY, 114, 76, Monster_Hp, Monster_Speed, 25, Monster_Exp, "Enemy03.png")
