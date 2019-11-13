@@ -3,7 +3,7 @@ import GameFramework
 
 
 class CPlayerBullet:
-    image = [None, None, None, None, None, None, None]
+    image = [None, None, None, None, None, None, None, None, None]
 
     def __init__(self, PosX, PosY, Damage, Radius, FileName):
         if CPlayerBullet.image[0] is None:
@@ -26,6 +26,13 @@ class CPlayerBullet:
 
         if CPlayerBullet.image[6] is None:
             CPlayerBullet.image[6] = load_image("Resource/Bullet/bullet_Lv7.png")
+
+        if CPlayerBullet.image[7] is None:
+            CPlayerBullet.image[7] = load_image("Resource/Bullet/pet_bullet_2.png")
+
+        if CPlayerBullet.image[8] is None:
+            CPlayerBullet.image[8] = load_image("Resource/Bullet/pet_bullet_3.png")
+
 
         self.IsDead = False
         self.x, self.y = PosX, PosY
@@ -69,6 +76,10 @@ class CPlayerBullet:
             index = 5
         if self.filename == "bullet_Lv7.png":
             index = 6
+        if self.filename == "pet_bullet_2.png":
+            index = 7
+        if self.filename == "pet_bullet_3.png":
+            index = 8
 
         if not self.IsDead:
             CPlayerBullet.image[index].draw(self.x, self.y)

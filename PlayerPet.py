@@ -1,6 +1,7 @@
 from pico2d import *
 import GameFramework
 import PlayerBullet
+import ObjectMgr
 
 
 class CPlayerPet:
@@ -26,6 +27,16 @@ class CPlayerPet:
 
     def Update(self):
         self.x, self.y = self.target.x - 80 * self.location, self.target.y - 20
+
+        # 총알 생성 시간 갱신.
+        self.time_CreateBullet = self.time_CreateBullet + 0.1
+
+        if self.time_CreateBullet >= self.time_UpdateCreateBullet:
+             # x, y, Damage, Radius, FileName1
+            GameObject = PlayerBullet.CPlayerBullet(self.x, self.y, self.damage, self.bullet_radius, self.bullet_filename)
+            ObjectMgr.Add_GameObject(GameObject, "PlayerBullet")
+            self.time_CreateBullet = 0.0
+
         pass
 
     def Render(self):
