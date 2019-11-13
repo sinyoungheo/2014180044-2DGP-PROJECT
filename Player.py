@@ -15,6 +15,10 @@ bIsBulletPowerUp = False
 time_bullet_power_up = 0.0
 time_update_bullet_power_up = 3.0
 
+# 새끼 용
+pet_cnt = 0
+pet_max_cnt = 2
+
 # 애니메이션 프레임.
 TIME_PER_ACTION = 0.2
 ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
