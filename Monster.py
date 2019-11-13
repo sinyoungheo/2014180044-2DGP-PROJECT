@@ -17,6 +17,10 @@ import ObjectMgr
 #
 # random.shuffle(Lst_CoinLottery)
 
+TIME_PER_ACTION = 0.2
+ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
+FRAMES_PER_ACTION = 4
+
 
 class CMonster:
     image = [None, None, None]
@@ -69,7 +73,7 @@ class CMonster:
             return -1
 
         # Animation
-        self.frame = (self.frame + 1) % 4
+        self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * GameFramework.frame_time) % 4
 
         # Move
         self.y = self.y - self.speed * GameFramework.frame_time
@@ -103,7 +107,8 @@ class CMonster:
             index = 2
 
         if not self.IsDead:
-            CMonster.image[index].clip_draw(self.frame * 76, 0, 76, 51, self.x, self.y, self.scaleX, self.scaleY)
+            CMonster.image[index].clip_draw(int(self.frame) * 76, 0, 76, 51, self.x, self.y, self.scaleX, self.scaleY)
+
             CMonster.image_HpBarEmpty.clip_draw(0, 0, 72, 10, self.x, self.y - 50)
             CMonster.image_HpBar.clip_draw(0, 0, int(self.hpCX), self.hpCY, self.hpPosX, self.y - 50)
         pass
