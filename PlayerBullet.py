@@ -1,4 +1,5 @@
 from pico2d import *
+import GameFramework
 
 
 class CPlayerBullet:
@@ -28,7 +29,7 @@ class CPlayerBullet:
 
         self.IsDead = False
         self.x, self.y = PosX, PosY
-        self.speed = 20
+        self.speed = 1500
         self.damage = Damage
         self.radius = Radius
         self.filename = FileName
@@ -41,7 +42,7 @@ class CPlayerBullet:
             return -1
 
         # Move
-        self.y = self.y + self.speed
+        self.y = self.y + self.speed * GameFramework.frame_time
 
         # OffSet
         if self.y >= 960:

@@ -8,7 +8,7 @@ import GameFramework
 # 자석 아이템.
 bIsMagnet = False
 time_magnet = 0.0
-time_update_magnet = 5.0
+time_update_magnet = 3.0
 
 
 class CPlayer:
@@ -156,6 +156,7 @@ class CPlayer:
 
         if bIsMagnet:
             time_magnet += GameFramework.frame_time
+            print(time_magnet)
             if time_magnet >= time_update_magnet:
                 time_magnet = 0.0
                 bIsMagnet = False
