@@ -3,11 +3,12 @@ import keyboard
 import PlayerBullet
 import ObjectMgr
 import Effect
+import GameFramework
 
 # 자석 아이템.
 bIsMagnet = False
 time_magnet = 0.0
-time_update_magnet = 30.0
+time_update_magnet = 5.0
 
 
 class CPlayer:
@@ -17,7 +18,7 @@ class CPlayer:
         self.frame = 0
         self.x, self.y = 360, 80
         self.dir = 0
-        self.speed = 15
+        self.speed = 600
         self.radius = 64
         # 총알 생성 주기.
         self.time_CreateBullet = 0.0
@@ -61,15 +62,16 @@ class CPlayer:
         self.frame = (self.frame + 1) % 4
 
         # Move
-        self.x = self.x + self.speed * self.dir
+        self.x = self.x + self.speed * self.dir * GameFramework.frame_time
 
         # OffSet
-        if self.x <= 0 + 64:
-            self.x = self.x + self.speed
-            pass
-        if self.x >= 720 - 64:
-            self.x = self.x - self.speed
-            pass
+        self.x = clamp(64, self.x, 720 - 64)
+        # if self.x <= 0 + 64:
+        #     self.x = self.x + self.speed
+        #     pass
+        # if self.x >= 720 - 64:
+        #     self.x = self.x - self.speed
+        #     pass
 
         # Level에 따른 Bullet 변경.
         self.Change_Bullet()
@@ -153,7 +155,7 @@ class CPlayer:
         global time_update_magnet
 
         if bIsMagnet:
-            time_magnet += 0.1
+            time_magnet += GameFramework.frame_time
             if time_magnet >= time_update_magnet:
                 time_magnet = 0.0
                 bIsMagnet = False
