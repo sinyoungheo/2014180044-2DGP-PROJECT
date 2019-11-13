@@ -1,4 +1,5 @@
 from pico2d import *
+import GameFramework
 
 time = 0.0
 
@@ -6,8 +7,8 @@ time = 0.0
 class CEffect:
     image = [None, None]
 
-    def __init__(self, PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX,
-                 ScaleY, FileName):
+    def __init__(self, PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX, ScaleY, FileName,
+                 Time_Per_Action, Frames_Per_Action):
         self.IsDead = False
         self.x = PosX
         self.y = PosY
@@ -22,6 +23,10 @@ class CEffect:
         self.filename = FileName
         self.isSingleEffect = IsSingleEffect
         self.isAnimationEndDead = IsAnimationEndDead
+
+        self.time_per_action = Time_Per_Action
+        self.action_per_time = 1.0 / self.time_per_action
+        self.frames_per_action = Frames_Per_Action
 
         if CEffect.image[0] is None:
             CEffect.image[0] = load_image("Resource/Effect/LvUp.png")
@@ -41,6 +46,7 @@ class CEffect:
 
         # Animation
         if not self.isSingleEffect:
+            self.frame = (self.frame + self.frames_per_action * self.action_per_time * GameFramework.frame_time)
             self.frame = (self.frame + self.speed)
         if self.frame >= self.max_frame:
             if self.isAnimationEndDead:

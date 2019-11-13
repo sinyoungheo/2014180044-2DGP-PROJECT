@@ -13,7 +13,7 @@ time_update_magnet = 3.0
 # 탄막 강화 아이템.
 bIsBulletPowerUp = False
 time_bullet_power_up = 0.0
-time_update_bullet_power_up = 5.0
+time_update_bullet_power_up = 3.0
 
 TIME_PER_ACTION = 0.2
 ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
@@ -116,7 +116,8 @@ class CPlayer:
             self.damage += 3
 
             # PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX, ScaleY, FileName
-            GameObj = Effect.CEffect(self.x, self.y, 256, 256, 1, False, True, 30, 100, 256, 256, "LvUp.png")
+            # time_per_action, frames_per_action
+            GameObj = Effect.CEffect(self.x, self.y, 256, 256, 1, False, True, 30, 100, 256, 256, "LvUp.png", 0.8, 30)
             ObjectMgr.Add_GameObject(GameObj, "Effect")
         pass
 

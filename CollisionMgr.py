@@ -21,7 +21,7 @@ random.shuffle(Lst_CoinLottery)
 Lst_ItemLottery = []
 for n in range(0, 100):
     Lst_ItemLottery.append(0)   # 꽝
-for n in range(0, 300):
+for n in range(0, 15):
     Lst_ItemLottery.append(1)   # dual shot
 for n in range(0, 15):
     Lst_ItemLottery.append(2)   # egg
@@ -29,7 +29,7 @@ for n in range(0, 15):
     Lst_ItemLottery.append(3)   # formation
 for n in range(0, 15):
     Lst_ItemLottery.append(4)   # invincible
-for n in range(0, 150):
+for n in range(0, 15):
     Lst_ItemLottery.append(5)   # magnet
 
 random.shuffle(Lst_ItemLottery)
@@ -74,8 +74,9 @@ def Collision_Monster_PLBullet(DstLst, SrcLst, Player):
                     Player.exp += Dst.exp
 
                     # Monster 사망 Effect
-                    # PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX, ScaleY, FileName
-                    GameObj = Effect.CEffect(Dst.x, Dst.y, 76, 51, 0.3, False, False, 4, 2.4, 114, 76, "dust.png")
+                    # PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX, ScaleY, FileName,
+                    # time_per_action, frames_per_action
+                    GameObj = Effect.CEffect(Dst.x, Dst.y, 76, 51, 0.3, False, False, 4, 2.4, 114, 76, "dust.png", 0.5, 4.0)
                     ObjectMgr.Add_GameObject(GameObj, "Effect")
 
                     # Item - Coin 생성.
