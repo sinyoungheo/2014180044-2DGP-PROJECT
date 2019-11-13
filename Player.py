@@ -10,6 +10,9 @@ bIsMagnet = False
 time_magnet = 0.0
 time_update_magnet = 3.0
 
+TIME_PER_ACTION = 0.2
+ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
+FRAMES_PER_ACTION = 4
 
 class CPlayer:
     def __init__(self):
@@ -59,7 +62,7 @@ class CPlayer:
             return -1
 
         # Animation
-        self.frame = (self.frame + 1) % 4
+        self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * GameFramework.frame_time) % 4
 
         # Move
         self.x = self.x + self.speed * self.dir * GameFramework.frame_time
@@ -94,7 +97,7 @@ class CPlayer:
         pass
 
     def Render(self):
-        self.image.clip_draw(self.frame * 128, 0, 128, 106, self.x, self.y)
+        self.image.clip_draw(int(self.frame) * 128, 0, 128, 106, self.x, self.y)
         pass
 
     ##################################################################################################################
