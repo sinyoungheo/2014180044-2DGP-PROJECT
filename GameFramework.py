@@ -1,3 +1,7 @@
+import time
+frame_time = 0.0
+
+
 class GameState:
     def __int__(self, state):
         self.Enter = state.Enter
@@ -59,10 +63,17 @@ def Run(start_state):
 
     start_state.Enter()
 
+    global frame_time
+    current_time = time.time()
+
     while running:
         stack[-1].Handle_Events()
         stack[-1].Update()
         stack[-1].Render()
+
+        frame_time = time.time() - current_time
+        frame_rate = 1.0 / frame_time
+        current_time += frame_time
 
     while len(stack) > 0:
         stack[-1].Exit()
