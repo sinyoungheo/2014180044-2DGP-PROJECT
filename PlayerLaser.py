@@ -31,7 +31,7 @@ class CPlayerLaser:
 
         self.scaleX -= 600 * GameFramework.frame_time
         if self.scaleX <= 0:
-            self.IsDead = True 
+            self.IsDead = True
 
         return 0
 
