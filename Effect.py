@@ -54,6 +54,7 @@ class CEffect:
             else:
                 self.frame = 0
 
+
         # LifeTime
         global time
         time += 0.1

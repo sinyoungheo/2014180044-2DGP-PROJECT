@@ -53,7 +53,7 @@ class CPlayerBullet:
 
         # OffSet
         if self.y >= 960:
-            self.IsDead = True 
+            self.IsDead = True
             pass
 
         return 0
