@@ -7,6 +7,7 @@ import Monster
 
 # 배경 이미지
 image = None
+scroll_y = 0
 
 # Monster01 생성 시간
 time_CreateMonster01 = 10.0
@@ -56,6 +57,9 @@ def Handle_Events():
 
 
 def Update():
+    global scroll_y
+    scroll_y += 5
+
     # Game Play Time
     global PlayTime
     PlayTime = get_time()
@@ -144,10 +148,12 @@ def Update():
 
 
 def Render():
+    global scroll_y
     # Object Render
     clear_canvas()
 
-    image.draw(360, 480, 720, 960)
+    image.clip_draw(0, 0, 384, 512, 360, 480, 720, 960)
+    #image.draw(360, 480, 720, 960)
     ObjectMgr.Render()
 
     update_canvas()
