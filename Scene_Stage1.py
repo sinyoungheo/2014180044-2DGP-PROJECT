@@ -7,7 +7,12 @@ import Monster
 
 # 배경 이미지
 image = None
-scroll_y = 0
+
+# 맵 스크롤링
+scroll_y = 2
+first_image_y = 1440
+second_image_y = 480
+
 
 # Monster01 생성 시간
 time_CreateMonster01 = 10.0
@@ -58,7 +63,17 @@ def Handle_Events():
 
 def Update():
     global scroll_y
-    scroll_y += 5
+    global first_image_y
+    global second_image_y
+
+    first_image_y -= scroll_y
+    second_image_y -= scroll_y
+
+    if first_image_y <= -480:
+        first_image_y = 1440
+
+    if second_image_y <= -480:
+        pass
 
     # Game Play Time
     global PlayTime
@@ -149,10 +164,19 @@ def Update():
 
 def Render():
     global scroll_y
+    global first_image_y
+    global second_image_y
+
     # Object Render
     clear_canvas()
 
-    image.clip_draw(0, 0, 384, 512, 360, 480, 720, 960)
+    # left, bottom, right, top, posX, posY, scaleX, scaleY
+    image.clip_draw(0, 0, 384, 512, 360, first_image_y, 720, 960)
+
+    # left, bottom, right, top, posX, posY, scaleX, scaleY
+    image.clip_draw(0, 0, 384, 512, 360, second_image_y, 720, 960)
+
+
     #image.draw(360, 480, 720, 960)
     ObjectMgr.Render()
 
