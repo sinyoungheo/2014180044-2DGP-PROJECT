@@ -1,6 +1,7 @@
 from pico2d import *
 import random
 import GameFramework
+import MonsterBullet
 
 TIME_PER_ACTION = 0.2
 ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
@@ -8,7 +9,7 @@ FRAMES_PER_ACTION = 4
 
 
 class CBossStage1:
-    def __init__(self):
+    def __init__(self, Target = None):
         self.IsDead = False
         self.frame = 0
         self.x, self.y = 360, 960
@@ -18,6 +19,11 @@ class CBossStage1:
         self.hp = 50000
         self.max_hp = self.hp
         self.exp = 1000
+
+        if Target is not None:
+            self.target = Target
+        else:
+            self.target = None
 
         self.image = load_image("Resource/Monster/Boss01.png")
         self.image_HpBarEmpty = load_image("Resource/UI/MonsterHpBarEmpty_0.png")

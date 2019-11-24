@@ -172,7 +172,7 @@ def Update():
     if PlayTime >= BossCreateTime_Stage1:
         if not IsCreateBoss_Stage1:
             # Stage1 보스 생성.
-            ObjectMgr.Add_GameObject(Boss_Stage1.CBossStage1(), "Monster")
+            ObjectMgr.Add_GameObject(Boss_Stage1.CBossStage1(ObjectMgr.LstPlayer[0]), "Monster")
             IsCreateBoss_Stage1 = True
             pass
 

@@ -18,7 +18,7 @@ class CMonsterBullet:
 
         self.IsDead = False
         self.x, self.y = PosX, PosY
-        self.speed = 1000
+        self.speed = 1500
         self.damage = Damage
         self.radius = Radius
         self.filename = FileName
