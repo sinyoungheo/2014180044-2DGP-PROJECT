@@ -15,7 +15,7 @@ time_update_magnet = 4.0
 # 탄막 강화 아이템.
 bIsBulletPowerUp = False
 time_bullet_power_up = 0.0
-time_update_bullet_power_up = 4.0
+time_update_bullet_power_up = 1.0
 
 # 레이저 아이템 - item_invincible
 bIsLaser = False

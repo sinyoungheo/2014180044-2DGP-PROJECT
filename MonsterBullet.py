@@ -1,6 +1,8 @@
 from pico2d import *
 import random
 import GameFramework
+import math
+import MathMgr
 
 
 class CMonsterBullet:
@@ -33,7 +35,9 @@ class CMonsterBullet:
             return -1
 
         # Move
-        self.y = self.y + self.speed * GameFramework.frame_time
+        if self.set_dir:
+            self.x -= math.cos(self.angle * MathMgr.PI / 180.0) * self.speed * GameFramework.frame_time
+            self.y -= math.sin(self.angle * MathMgr.PI / 180.0) * self.speed * GameFramework.frame_time
 
         # OffSet
         if self.y >= 960 or self.y <= 0:
