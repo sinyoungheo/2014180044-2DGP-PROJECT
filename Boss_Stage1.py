@@ -51,6 +51,7 @@ class CBossStage1:
         self.hpCX = self.originCX * self.hpRadio
         self.hpPosX = self.x - (self.originCX - self.hpCX) / 2
 
+        return 0
         pass
 
     def Render(self):
