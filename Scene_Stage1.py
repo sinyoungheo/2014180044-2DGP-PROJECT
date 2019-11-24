@@ -9,7 +9,7 @@ import Monster
 image = None
 
 # 맵 스크롤링
-scroll_y = 2
+scroll_y = 4
 first_image_y = 1440
 second_image_y = 480
 
@@ -73,7 +73,8 @@ def Update():
         first_image_y = 1440
 
     if second_image_y <= -480:
-        pass
+        second_image_y = 1440
+
 
     # Game Play Time
     global PlayTime
@@ -106,7 +107,7 @@ def Update():
         for n in range(random.randint(0, 2 + 1), random.randint(3, 5 + 1)):
             PosX = Pos_CreateX + Pos_OffsetX * n
             Monster_Hp = 100
-            Monster_Speed = 300
+            Monster_Speed = 400
             Monster_Exp = 50
             # x, y, scaleX, scaleY, hp, speed, radius, exp, filename
             GameObject = Monster.CMonster(PosX, Pos_CreateY, 114, 76, Monster_Hp, Monster_Speed, 25, Monster_Exp, "Enemy01.png")
@@ -126,7 +127,7 @@ def Update():
             for n in range(random.randint(0, 2 + 1), random.randint(3, 5 + 1)):
                 PosX = Pos_CreateX + Pos_OffsetX * n
                 Monster_Hp = 250
-                Monster_Speed = 500
+                Monster_Speed = 600
                 Monster_Exp = 150
                 # x, y, scaleX, scaleY, hp, speed, radius, exp, filename
                 GameObject = Monster.CMonster(PosX, Pos_CreateY, 114, 76, Monster_Hp, Monster_Speed, 25, Monster_Exp, "Enemy02.png")
@@ -147,7 +148,7 @@ def Update():
             for n in range(random.randint(0, 2 + 1), random.randint(3, 5 + 1)):
                 PosX = Pos_CreateX + Pos_OffsetX * n
                 Monster_Hp = 500
-                Monster_Speed = 600
+                Monster_Speed = 700
                 Monster_Exp = 300
                 # x, y, scaleX, scaleY, hp, speed, radius, exp, filename
                 GameObject = Monster.CMonster(PosX, Pos_CreateY, 114, 76, Monster_Hp, Monster_Speed, 25, Monster_Exp, "Enemy03.png")
