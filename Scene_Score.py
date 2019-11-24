@@ -3,6 +3,7 @@ import GameFramework
 
 image = None
 
+score = 0
 
 
 def Enter():
@@ -35,6 +36,8 @@ def Handle_Events():
 
 
 def Update():
+    global score
+    print(score)
     pass
 
 

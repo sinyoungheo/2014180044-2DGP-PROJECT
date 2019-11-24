@@ -4,6 +4,7 @@ import Effect
 import Item
 import Player
 import random
+import Scene_Score
 
 # Random Item 생성.
 Lst_CoinLottery = []
@@ -85,6 +86,7 @@ def Collision_Monster_Player(DstLst, SrcLst):
     for Dst in DstLst:
         for Src in SrcLst:
             if Check_Collision(Dst, Src):
+                Scene_Score.score = Src.coin_cnt
                 return True
 
     return False

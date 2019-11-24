@@ -92,7 +92,6 @@ class CPlayer:
         if self.IsDead:
             return -1
 
-        print(self.coin_cnt)
         # Animation
         self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * GameFramework.frame_time) % 4
 
