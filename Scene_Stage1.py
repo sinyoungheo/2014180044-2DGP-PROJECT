@@ -14,7 +14,6 @@ scroll_y = 4
 first_image_y = 1440
 second_image_y = 480
 
-
 # Monster01 생성 시간
 time_CreateMonster01 = 10.0
 time_UpdateCreateMonster01 = 10.0
@@ -80,7 +79,6 @@ def Update():
     if second_image_y <= -480:
         second_image_y = 1440
 
-
     # Game Play Time
     global PlayTime
     PlayTime = get_time()
@@ -115,7 +113,8 @@ def Update():
             Monster_Speed = 400
             Monster_Exp = 50
             # x, y, scaleX, scaleY, hp, speed, radius, exp, filename
-            GameObject = Monster.CMonster(PosX, Pos_CreateY, 114, 76, Monster_Hp, Monster_Speed, 25, Monster_Exp, "Enemy01.png")
+            GameObject = Monster.CMonster(PosX, Pos_CreateY, 114, 76, Monster_Hp, Monster_Speed, 25, Monster_Exp,
+                                          "Enemy01.png")
 
             ObjectMgr.Add_GameObject(GameObject, "Monster")
             pass
@@ -135,7 +134,8 @@ def Update():
                 Monster_Speed = 600
                 Monster_Exp = 150
                 # x, y, scaleX, scaleY, hp, speed, radius, exp, filename
-                GameObject = Monster.CMonster(PosX, Pos_CreateY, 114, 76, Monster_Hp, Monster_Speed, 25, Monster_Exp, "Enemy02.png")
+                GameObject = Monster.CMonster(PosX, Pos_CreateY, 114, 76, Monster_Hp, Monster_Speed, 25, Monster_Exp,
+                                              "Enemy02.png")
 
                 ObjectMgr.Add_GameObject(GameObject, "Monster")
                 pass
@@ -156,7 +156,8 @@ def Update():
                 Monster_Speed = 700
                 Monster_Exp = 300
                 # x, y, scaleX, scaleY, hp, speed, radius, exp, filename
-                GameObject = Monster.CMonster(PosX, Pos_CreateY, 114, 76, Monster_Hp, Monster_Speed, 25, Monster_Exp, "Enemy03.png")
+                GameObject = Monster.CMonster(PosX, Pos_CreateY, 114, 76, Monster_Hp, Monster_Speed, 25, Monster_Exp,
+                                              "Enemy03.png")
 
                 ObjectMgr.Add_GameObject(GameObject, "Monster")
                 pass
@@ -193,12 +194,11 @@ def Render():
     # left, bottom, right, top, posX, posY, scaleX, scaleY
     image.clip_draw(0, 0, 384, 512, 360, second_image_y, 720, 960)
 
-
-    #image.draw(360, 480, 720, 960)
+    # image.draw(360, 480, 720, 960)
     ObjectMgr.Render()
 
     update_canvas()
-    #delay(0.015)
+    # delay(0.015)
     pass
 
 

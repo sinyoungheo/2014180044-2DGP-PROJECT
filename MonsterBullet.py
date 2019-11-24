@@ -6,7 +6,7 @@ import GameFramework
 class CMonsterBullet:
     image = [None, None, None]
 
-    def __init__(self, PosX, PosY, Damage, Radius, FileName):
+    def __init__(self, PosX, PosY, Speed, Radius, Angle, IsSetDir, FileName):
         if CMonsterBullet.image[0] is None:
             CMonsterBullet.image[0] = load_image("Resource/Bullet/BossBullet_1.png")
 
@@ -18,9 +18,10 @@ class CMonsterBullet:
 
         self.IsDead = False
         self.x, self.y = PosX, PosY
-        self.speed = 1500
-        self.damage = Damage
+        self.speed = Speed
         self.radius = Radius
+        self.angle = Angle
+        self.set_dir = IsSetDir
         self.filename = FileName
         pass
 

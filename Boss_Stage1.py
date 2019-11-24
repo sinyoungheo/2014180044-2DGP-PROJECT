@@ -1,12 +1,16 @@
 from pico2d import *
 import random
 import GameFramework
+import ObjectMgr
+import MathMgr
 import MonsterBullet
 
 TIME_PER_ACTION = 0.2
 ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
 FRAMES_PER_ACTION = 4
 
+time_CreateBullet = 0.0
+time_UpdateCreateBullet = 0.5
 
 class CBossStage1:
     def __init__(self, Target = None):
@@ -57,6 +61,9 @@ class CBossStage1:
         self.hpCX = self.originCX * self.hpRadio
         self.hpPosX = self.x - (self.originCX - self.hpCX) / 2
 
+        # Create Bullet
+        self.CreateBullet()
+
         return 0
         pass
 
@@ -69,6 +76,20 @@ class CBossStage1:
         pass
 
     ######################################
+
+    def CreateBullet(self):
+        global time_CreateBullet
+        global time_UpdateCreateBullet
+
+        time_CreateBullet += GameFramework.frame_time
+
+        if time_CreateBullet >= time_UpdateCreateBullet:
+            angle = MathMgr.CalcDegree(self, self.target)
+
+            ObjectMgr.Add_GameObject(MonsterBullet.CMonsterBullet(self.x, self.y, 1000, 26, angle, True, "BossBullet_1"), "MonsterBullet")
+            pass
+
+        pass
 
 
     pass
