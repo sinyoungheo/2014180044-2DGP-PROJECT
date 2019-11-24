@@ -21,7 +21,7 @@ class CBossStage1:
         self.scaleX, self.scaleY = 300, 256
         self.speed = 400
         self.radius = 128
-        self.hp = 50000
+        self.hp = 10000
         self.max_hp = self.hp
         self.exp = 1000
 
