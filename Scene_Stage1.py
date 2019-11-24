@@ -36,6 +36,10 @@ Monster_Hp = 100
 Monster_Speed = 3
 Monster_Exp = 50
 
+# Stage1 Boss 생성.
+IsCreateBoss_Stage1 = False
+BossCreateTime_Stage1 = 10.0
+
 # Game Play Time
 PlayTime = 0.0
 
