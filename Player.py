@@ -62,17 +62,12 @@ class CPlayer:
         # ObjectMgr.Add_GameObject(PlayerPet.CPlayerPet(self, 1, "pet01"), "PlayerPet")
 
     def Handle_Events(self):
-        if keyboard.is_pressed('left'):
-            self.dir = -1
-        if keyboard.is_pressed('right'):
-            self.dir = 1
-
         events = get_events()
-
         for event in events:
             if event.type == SDL_KEYUP:
                 if event.key == SDLK_LEFT or event.key == SDLK_RIGHT:
-                    self.dir = 0
+                    #self.dir = 0
+                    pass
 
             if event.type == SDL_KEYDOWN:
                 if event.key == SDLK_1:
@@ -84,17 +79,25 @@ class CPlayer:
                 #     pass
                 pass
 
+        if keyboard.is_pressed('left'):
+            self.x -= self.speed * GameFramework.frame_time
+            # self.dir = -1
+        if keyboard.is_pressed('right'):
+            self.x += self.speed * GameFramework.frame_time
+            # self.dir = 1
+
         pass
 
     def Update(self):
         if self.IsDead:
             return -1
 
+        print(self.coin_cnt)
         # Animation
         self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * GameFramework.frame_time) % 4
 
         # Move
-        self.x = self.x + self.speed * self.dir * GameFramework.frame_time
+        #self.x = self.x + self.speed * self.dir * GameFramework.frame_time
 
         # OffSet
         self.x = clamp(64, self.x, 720 - 64)

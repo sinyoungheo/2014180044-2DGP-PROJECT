@@ -57,10 +57,37 @@ def Enter():
 def Exit():
     global image
     del image
+    image = None
+
+    # ObjectMgr.All_Delete_GameObject()
+
+    global PlayTime
+    global time_CreateMonster01
+    global time_CreateMonster02
+    global time_CreateMonster03
+    global IsCreateBoss_Stage1
+    global BossCreateTime_Stage1
+
+    PlayTime = 0.0
+    time_CreateMonster01 = 0.0
+    time_CreateMonster02 = 0.0
+    time_CreateMonster03 = 0.0
+
+    IsCreateBoss_Stage1 = False
+    BossCreateTime_Stage1 = 0.0
     pass
 
 
 def Handle_Events():
+    events = get_events()
+
+    for event in events:
+        if event.type == SDL_QUIT:
+            GameFramework.Quit()
+        else:
+            if (event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
+                GameFramework.Quit()
+
     ObjectMgr.Handle_Events()
     pass
 

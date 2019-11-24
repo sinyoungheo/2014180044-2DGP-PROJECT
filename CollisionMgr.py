@@ -81,6 +81,14 @@ def Check_Collision_Laser(Dst, Src):
 def Collision_Monster_Player(DstLst, SrcLst):
     # DstLst - Monster
     # SrcLst - Player
+
+    for Dst in DstLst:
+        for Src in SrcLst:
+            if Check_Collision(Dst, Src):
+                return True
+
+    return False
+
     pass
 
 

@@ -1,4 +1,6 @@
 import CollisionMgr
+import GameFramework
+import Scene_Score
 
 # Object List
 ObjLst = []
@@ -64,6 +66,14 @@ def Update():
     CollisionMgr.Collision_Monster_PLLaser(LstMonster, LstPlayerLaser, LstPlayer[0])
     CollisionMgr.Collision_Player_Item(LstPlayer, LstItem)
 
+    if CollisionMgr.Collision_Monster_Player(LstMonster, LstPlayer):
+        GameFramework.Change_State(Scene_Score)
+        return
+
+    if CollisionMgr.Collision_Monster_Player(LstMonsterBullet, LstPlayer):
+        GameFramework.Change_State(Scene_Score)
+        return
+
     pass
 
 
@@ -77,6 +87,18 @@ def Render():
 
     pass
 
+
+# GameObject Clear
+def All_Delete_GameObject():
+    global ObjLst
+
+    # for List in ObjLst:
+    #     for GameObj in List:
+    #         List.remove(GameObj)
+    #         del GameObj
+    #         pass
+
+    pass
 
 # GameObject Add
 def Add_GameObject(GameObject, ObjID):
