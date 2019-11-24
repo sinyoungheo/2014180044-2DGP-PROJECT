@@ -96,17 +96,8 @@ class CPlayer:
         # Animation
         self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * GameFramework.frame_time) % 4
 
-        # Move
-        #self.x = self.x + self.speed * self.dir * GameFramework.frame_time
-
         # OffSet
         self.x = clamp(64, self.x, 720 - 64)
-        # if self.x <= 0 + 64:
-        #     self.x = self.x + self.speed
-        #     pass
-        # if self.x >= 720 - 64:
-        #     self.x = self.x - self.speed
-        #     pass
 
         # Level에 따른 Bullet 변경.
         self.Change_Bullet()
