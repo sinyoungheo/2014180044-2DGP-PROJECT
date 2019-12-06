@@ -11,10 +11,10 @@ ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
 FRAMES_PER_ACTION = 4
 
 time_CreateBullet = 0.0
-time_UpdateCreateBullet = 0.25
+time_UpdateCreateBullet = 0.5
 
 time_CreateBullet2 = 0.0
-time_UpdateCreateBullet2 = 1.5
+time_UpdateCreateBullet2 = 2.5
 
 
 class CBossStage2:
@@ -95,7 +95,7 @@ class CBossStage2:
             time_CreateBullet = 0.0
 
             angle = MathMgr.CalcDegree(self, self.target)
-            angle += random.randint(-5, 5)
+            angle += random.randint(-10, 10)
 
             ObjectMgr.Add_GameObject(MonsterBullet.CMonsterBullet(self.x, self.y - 50.0, 450, 26, angle, True, "BossBullet_2"), "MonsterBullet")
             pass
