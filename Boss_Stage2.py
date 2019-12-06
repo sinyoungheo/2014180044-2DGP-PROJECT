@@ -13,6 +13,9 @@ FRAMES_PER_ACTION = 4
 time_CreateBullet = 0.0
 time_UpdateCreateBullet = 0.25
 
+time_CreateBullet2 = 0.0
+time_UpdateCreateBullet2 = 1.5
+
 
 class CBossStage2:
     def __init__(self, Target=None):
@@ -84,15 +87,22 @@ class CBossStage2:
         global time_CreateBullet
         global time_UpdateCreateBullet
 
-        time_CreateBullet += GameFramework.frame_time
+        global time_CreateBullet2
+        global time_UpdateCreateBullet2
 
+        time_CreateBullet += GameFramework.frame_time
         if time_CreateBullet >= time_UpdateCreateBullet:
+            time_CreateBullet = 0.0
+
             angle = MathMgr.CalcDegree(self, self.target)
             angle += random.randint(-5, 5)
 
-            ObjectMgr.Add_GameObject(MonsterBullet.CMonsterBullet(self.x, self.y - 50.0, 500, 26, angle, True, "BossBullet_2"), "MonsterBullet")
-            time_CreateBullet = 0.0
+            ObjectMgr.Add_GameObject(MonsterBullet.CMonsterBullet(self.x, self.y - 50.0, 450, 26, angle, True, "BossBullet_2"), "MonsterBullet")
             pass
+
+        time_CreateBullet2 += GameFramework.frame_time
+        if time_CreateBullet2 >= time_UpdateCreateBullet2:
+            time_CreateBullet2 = 0.0
 
         pass
 

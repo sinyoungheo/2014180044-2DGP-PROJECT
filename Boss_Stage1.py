@@ -95,7 +95,7 @@ class CBossStage1:
             angle = MathMgr.CalcDegree(self, self.target)
             angle += random.randint(-5, 5)
 
-            ObjectMgr.Add_GameObject(MonsterBullet.CMonsterBullet(self.x, self.y - 50.0, 500, 26, angle, True, "BossBullet_1"), "MonsterBullet")
+            ObjectMgr.Add_GameObject(MonsterBullet.CMonsterBullet(self.x, self.y - 50.0, 450, 26, angle, True, "BossBullet_1"), "MonsterBullet")
             time_CreateBullet = 0.0
             pass
 
