@@ -66,13 +66,13 @@ def Update():
     CollisionMgr.Collision_Monster_PLLaser(LstMonster, LstPlayerLaser, LstPlayer[0])
     CollisionMgr.Collision_Player_Item(LstPlayer, LstItem)
 
-    if CollisionMgr.Collision_Monster_Player(LstMonster, LstPlayer):
-        GameFramework.Change_State(Scene_Score)
-        return
-
-    if CollisionMgr.Collision_Monster_Player(LstMonsterBullet, LstPlayer):
-        GameFramework.Change_State(Scene_Score)
-        return
+    # if CollisionMgr.Collision_Monster_Player(LstMonster, LstPlayer):
+    #     GameFramework.Change_State(Scene_Score)
+    #     return
+    #
+    # if CollisionMgr.Collision_Monster_Player(LstMonsterBullet, LstPlayer):
+    #     GameFramework.Change_State(Scene_Score)
+    #     return
 
     pass
 

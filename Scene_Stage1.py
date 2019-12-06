@@ -43,11 +43,19 @@ BossCreateTime_Stage1 = 3.0
 # Game Play Time
 PlayTime = 0.0
 
+bgm = None
+
 
 def Enter():
     # 배경 이미지
     global image
+    global bgm
     image = load_image("Resource/Scene/Scene_01.png")
+
+    # BGM
+    bgm = load_music("Sound/dragon_flight.mp3")
+    bgm.set_volume(32)
+    bgm.repeat_play()
 
     # Player 생성
     GameObject = Player.CPlayer()

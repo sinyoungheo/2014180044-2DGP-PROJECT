@@ -10,6 +10,7 @@ def Enter():
     global image
     global bgm
     image = load_image("Resource/Scene/Scene_00.png")
+
     bgm = load_music("Sound/dragon_flight2.mp3")
     bgm.set_volume(32)
     bgm.repeat_play()
