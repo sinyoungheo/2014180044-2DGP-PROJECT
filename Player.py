@@ -135,7 +135,7 @@ class CPlayer:
             self.exp -= self.max_exp
             self.max_exp = self.max_exp * 1.15
             self.level += 1
-            self.damage += 3
+            self.damage += 5
 
             # PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX, ScaleY, FileName
             # time_per_action, frames_per_action

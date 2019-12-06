@@ -141,15 +141,22 @@ def Update():
     global Monster_Speed
     global Monster_Exp
 
+    global IsDead_BossStage1
+
     # Monster 01 생성.
     time_CreateMonster01 += 0.1
 
     if time_CreateMonster01 >= time_UpdateCreateMonster01:
         for n in range(random.randint(0, 2 + 1), random.randint(3, 5 + 1)):
             PosX = Pos_CreateX + Pos_OffsetX * n
-            Monster_Hp = 100
-            Monster_Speed = 400
-            Monster_Exp = 500
+            if not IsDead_BossStage1:
+                Monster_Hp = 100
+                Monster_Speed = 400
+                Monster_Exp = 500
+            else:
+                Monster_Hp = 1200
+                Monster_Speed = 700
+                Monster_Exp = 1000
             # x, y, scaleX, scaleY, hp, speed, radius, exp, filename
             GameObject = Monster.CMonster(PosX, Pos_CreateY, 114, 76, Monster_Hp, Monster_Speed, 25, Monster_Exp,
                                           "Enemy01.png")
@@ -168,9 +175,14 @@ def Update():
         if time_CreateMonster02 >= time_UpdateCreateMonster02:
             for n in range(random.randint(0, 2 + 1), random.randint(3, 5 + 1)):
                 PosX = Pos_CreateX + Pos_OffsetX * n
-                Monster_Hp = 250
-                Monster_Speed = 600
-                Monster_Exp = 1500
+                if not IsDead_BossStage1:
+                    Monster_Hp = 250
+                    Monster_Speed = 600
+                    Monster_Exp = 1500
+                else:
+                    Monster_Hp = 2000
+                    Monster_Speed = 900
+                    Monster_Exp = 3000
                 # x, y, scaleX, scaleY, hp, speed, radius, exp, filename
                 GameObject = Monster.CMonster(PosX, Pos_CreateY, 114, 76, Monster_Hp, Monster_Speed, 25, Monster_Exp,
                                               "Enemy02.png")
@@ -190,9 +202,14 @@ def Update():
         if time_CreateMonster03 >= time_UpdateCreateMonster03:
             for n in range(random.randint(0, 2 + 1), random.randint(3, 5 + 1)):
                 PosX = Pos_CreateX + Pos_OffsetX * n
-                Monster_Hp = 500
-                Monster_Speed = 700
-                Monster_Exp = 3000
+                if not IsDead_BossStage1:
+                    Monster_Hp = 500
+                    Monster_Speed = 700
+                    Monster_Exp = 3000
+                else:
+                    Monster_Hp = 3000
+                    Monster_Speed = 1000
+                    Monster_Exp = 5000
                 # x, y, scaleX, scaleY, hp, speed, radius, exp, filename
                 GameObject = Monster.CMonster(PosX, Pos_CreateY, 114, 76, Monster_Hp, Monster_Speed, 25, Monster_Exp,
                                               "Enemy03.png")
