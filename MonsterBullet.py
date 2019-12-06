@@ -39,8 +39,6 @@ class CMonsterBullet:
             self.x -= math.cos(self.angle * MathMgr.PI / 180.0) * self.speed * GameFramework.frame_time
             self.y -= math.sin(self.angle * MathMgr.PI / 180.0) * self.speed * GameFramework.frame_time
 
-        print(self.angle)
-
         # OffSet
         if self.y >= 960 or self.y <= 0:
             self.IsDead = True
