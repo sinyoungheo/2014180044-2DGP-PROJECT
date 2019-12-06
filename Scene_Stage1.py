@@ -8,6 +8,8 @@ import Boss_Stage1
 
 # 배경 이미지
 image = None
+image2 = None
+bgm = None
 
 # 맵 스크롤링
 scroll_y = 4
@@ -39,18 +41,19 @@ Monster_Exp = 50
 # Stage1 Boss 생성.
 IsCreateBoss_Stage1 = False
 BossCreateTime_Stage1 = 3.0
+IsDead_BossStage1 = False
 
 # Game Play Time
 PlayTime = 0.0
-
-bgm = None
 
 
 def Enter():
     # 배경 이미지
     global image
+    global image2
     global bgm
     image = load_image("Resource/Scene/Scene_01.png")
+    image2 = load_image("Resource/Scene/Scene_03.png")
 
     # BGM
     bgm = load_music("Sound/dragon_flight.mp3")
@@ -146,7 +149,7 @@ def Update():
             PosX = Pos_CreateX + Pos_OffsetX * n
             Monster_Hp = 100
             Monster_Speed = 400
-            Monster_Exp = 50
+            Monster_Exp = 500
             # x, y, scaleX, scaleY, hp, speed, radius, exp, filename
             GameObject = Monster.CMonster(PosX, Pos_CreateY, 114, 76, Monster_Hp, Monster_Speed, 25, Monster_Exp,
                                           "Enemy01.png")
@@ -167,7 +170,7 @@ def Update():
                 PosX = Pos_CreateX + Pos_OffsetX * n
                 Monster_Hp = 250
                 Monster_Speed = 600
-                Monster_Exp = 150
+                Monster_Exp = 1500
                 # x, y, scaleX, scaleY, hp, speed, radius, exp, filename
                 GameObject = Monster.CMonster(PosX, Pos_CreateY, 114, 76, Monster_Hp, Monster_Speed, 25, Monster_Exp,
                                               "Enemy02.png")
@@ -189,7 +192,7 @@ def Update():
                 PosX = Pos_CreateX + Pos_OffsetX * n
                 Monster_Hp = 500
                 Monster_Speed = 700
-                Monster_Exp = 300
+                Monster_Exp = 3000
                 # x, y, scaleX, scaleY, hp, speed, radius, exp, filename
                 GameObject = Monster.CMonster(PosX, Pos_CreateY, 114, 76, Monster_Hp, Monster_Speed, 25, Monster_Exp,
                                               "Enemy03.png")
@@ -219,15 +222,21 @@ def Render():
     global scroll_y
     global first_image_y
     global second_image_y
+    global IsDead_BossStage1
 
     # Object Render
     clear_canvas()
 
-    # left, bottom, right, top, posX, posY, scaleX, scaleY
-    image.clip_draw(0, 0, 384, 512, 360, first_image_y, 720, 960)
-
-    # left, bottom, right, top, posX, posY, scaleX, scaleY
-    image.clip_draw(0, 0, 384, 512, 360, second_image_y, 720, 960)
+    if not IsDead_BossStage1:
+        # left, bottom, right, top, posX, posY, scaleX, scaleY
+        image.clip_draw(0, 0, 384, 512, 360, first_image_y, 720, 960)
+        # left, bottom, right, top, posX, posY, scaleX, scaleY
+        image.clip_draw(0, 0, 384, 512, 360, second_image_y, 720, 960)
+    else:
+        # left, bottom, right, top, posX, posY, scaleX, scaleY
+        image2.clip_draw(0, 0, 384, 512, 360, first_image_y, 720, 960)
+        # left, bottom, right, top, posX, posY, scaleX, scaleY
+        image2.clip_draw(0, 0, 384, 512, 360, second_image_y, 720, 960)
 
     # image.draw(360, 480, 720, 960)
     ObjectMgr.Render()

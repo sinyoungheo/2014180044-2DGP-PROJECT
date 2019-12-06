@@ -4,6 +4,7 @@ import GameFramework
 import ObjectMgr
 import MathMgr
 import MonsterBullet
+import Scene_Stage1
 
 TIME_PER_ACTION = 0.2
 ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
@@ -48,6 +49,7 @@ class CBossStage1:
 
     def Update(self):
         if self.IsDead:
+            Scene_Stage1.IsDead_BossStage1 = True
             return -1
 
         # Animation
