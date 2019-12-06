@@ -11,7 +11,10 @@ ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
 FRAMES_PER_ACTION = 4
 
 time_CreateBullet = 0.0
-time_UpdateCreateBullet = 0.2
+time_UpdateCreateBullet = 0.25
+
+time_CreateBullet2 = 0.0
+time_UpdateCreateBullet2 = 1.0
 
 
 class CBossStage1:
@@ -22,7 +25,7 @@ class CBossStage1:
         self.scaleX, self.scaleY = 300, 256
         self.speed = 400
         self.radius = 128
-        self.hp = 15000
+        self.hp = 25000
         self.max_hp = self.hp
         self.exp = 3000
 
@@ -84,18 +87,25 @@ class CBossStage1:
         global time_CreateBullet
         global time_UpdateCreateBullet
 
-        time_CreateBullet += GameFramework.frame_time
+        global time_CreateBullet2
+        global time_UpdateCreateBullet2
 
+        time_CreateBullet += GameFramework.frame_time
         if time_CreateBullet >= time_UpdateCreateBullet:
             angle = MathMgr.CalcDegree(self, self.target)
-
             angle += random.randint(-5, 5)
 
-            ObjectMgr.Add_GameObject(MonsterBullet.CMonsterBullet(self.x, self.y - 50.0, 500, 26, angle, True, "BossBullet_1"),
-                                     "MonsterBullet")
+            ObjectMgr.Add_GameObject(MonsterBullet.CMonsterBullet(self.x, self.y - 50.0, 500, 26, angle, True, "BossBullet_1"), "MonsterBullet")
             time_CreateBullet = 0.0
             pass
 
+        time_CreateBullet2 += GameFramework.frame_time
+        if time_CreateBullet2 >= time_UpdateCreateBullet2:
+            angle = MathMgr.CalcDegree(self, self.target)
+            ObjectMgr.Add_GameObject(MonsterBullet.CMonsterBullet(self.x, self.y - 50.0, 500, 26, angle, True, "BossBullet_1"), "MonsterBullet")
+            ObjectMgr.Add_GameObject(MonsterBullet.CMonsterBullet(self.x, self.y - 50.0, 500, 26, angle + 15.0, True, "BossBullet_1"), "MonsterBullet")
+            ObjectMgr.Add_GameObject(MonsterBullet.CMonsterBullet(self.x, self.y - 50.0, 500, 26, angle - 15.0, True, "BossBullet_1"), "MonsterBullet")
+            time_CreateBullet2 = 0.0
         pass
 
     pass

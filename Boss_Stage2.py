@@ -6,12 +6,12 @@ import MathMgr
 import MonsterBullet
 import Scene_Stage1
 
-TIME_PER_ACTION = 0.2
+TIME_PER_ACTION = 0.5
 ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
 FRAMES_PER_ACTION = 4
 
 time_CreateBullet = 0.0
-time_UpdateCreateBullet = 0.2
+time_UpdateCreateBullet = 0.25
 
 
 class CBossStage2:
@@ -22,7 +22,7 @@ class CBossStage2:
         self.scaleX, self.scaleY = 300, 256
         self.speed = 400
         self.radius = 128
-        self.hp = 45000
+        self.hp = 50000
         self.max_hp = self.hp
         self.exp = 3000
 
@@ -88,11 +88,9 @@ class CBossStage2:
 
         if time_CreateBullet >= time_UpdateCreateBullet:
             angle = MathMgr.CalcDegree(self, self.target)
-
             angle += random.randint(-5, 5)
 
-            ObjectMgr.Add_GameObject(MonsterBullet.CMonsterBullet(self.x, self.y - 50.0, 500, 26, angle, True, "BossBullet_1"),
-                                     "MonsterBullet")
+            ObjectMgr.Add_GameObject(MonsterBullet.CMonsterBullet(self.x, self.y - 50.0, 500, 26, angle, True, "BossBullet_2"), "MonsterBullet")
             time_CreateBullet = 0.0
             pass
 

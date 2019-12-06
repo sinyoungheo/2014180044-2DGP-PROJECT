@@ -39,6 +39,8 @@ class CMonsterBullet:
             self.x -= math.cos(self.angle * MathMgr.PI / 180.0) * self.speed * GameFramework.frame_time
             self.y -= math.sin(self.angle * MathMgr.PI / 180.0) * self.speed * GameFramework.frame_time
 
+        print(self.angle)
+
         # OffSet
         if self.y >= 960 or self.y <= 0:
             self.IsDead = True
@@ -52,11 +54,11 @@ class CMonsterBullet:
     def Render(self):
         index = 0
 
-        if self.filename == "BossBullet_1.png":
+        if self.filename == "BossBullet_1":
             index = 0
-        if self.filename == "BossBullet_2.png":
+        if self.filename == "BossBullet_2":
             index = 1
-        if self.filename == "BossBullet_3.png":
+        if self.filename == "BossBullet_3":
             index = 2
 
         if not self.IsDead:

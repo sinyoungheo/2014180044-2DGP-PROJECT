@@ -5,6 +5,7 @@ import ObjectMgr
 import Player
 import Monster
 import Boss_Stage1
+import Boss_Stage2
 
 # 배경 이미지
 image = None
@@ -40,8 +41,14 @@ Monster_Exp = 50
 
 # Stage1 Boss 생성.
 IsCreateBoss_Stage1 = False
-BossCreateTime_Stage1 = 3.0
+BossCreateTime_Stage1 = 5.0
 IsDead_BossStage1 = False
+
+# Stage2 Boss 생성.
+IsCreateBoss_Stage2 = False
+BossCreateTime_Stage2 = 0.0
+BossUpdateTime_Stage2 = 5.0
+IsDead_BossStage2 = False
 
 # Game Play Time
 PlayTime = 0.0
@@ -221,7 +228,7 @@ def Update():
             time_CreateMonster03 = 0.0
         pass
 
-    # Boss Monster 생성.
+    # Stage1 Boss
     global IsCreateBoss_Stage1
     global BossCreateTime_Stage1
 
@@ -232,6 +239,21 @@ def Update():
             IsCreateBoss_Stage1 = True
             pass
 
+    # Stage2 Boss
+    global IsCreateBoss_Stage2
+    global BossCreateTime_Stage2
+    global BossUpdateTime_Stage2
+    global IsDead_BossStage2
+
+    if IsDead_BossStage1:
+        BossCreateTime_Stage2 += 0.1
+        if BossCreateTime_Stage2 >= BossUpdateTime_Stage2:
+            if not IsCreateBoss_Stage2:
+                # Stage2 보스 생성.
+                ObjectMgr.Add_GameObject(Boss_Stage2.CBossStage2(ObjectMgr.LstPlayer[0]), "Monster")
+                IsCreateBoss_Stage2 = True
+            pass
+        pass
     pass
 
 
