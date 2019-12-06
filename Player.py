@@ -44,7 +44,7 @@ class CPlayer:
         self.frame = 0
         self.x, self.y = 360, 80
         self.dir = 0
-        self.speed = 600
+        self.speed = 400
         self.radius = 52
         # 총알 생성 주기.
         self.time_CreateBullet = 0.0
@@ -62,6 +62,9 @@ class CPlayer:
         self.flight_distance = 0
         # # 새끼용 생성
         # ObjectMgr.Add_GameObject(PlayerPet.CPlayerPet(self, 1, "pet01"), "PlayerPet")
+
+        # Font
+        self.font = load_font("Font/Maplestory Bold.ttf", 25)
 
     def Handle_Events(self):
         events = get_events()
@@ -95,8 +98,9 @@ class CPlayer:
             return -1
 
         # 비행 거리
-        self.flight_distance += 50 * GameFramework.frame_time
+        self.flight_distance += 400 * GameFramework.frame_time
         Scene_Score.flight_distance = self.flight_distance
+        Scene_Score.score = self.coin_cnt
 
         # Animation
         self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * GameFramework.frame_time) % 4
@@ -127,6 +131,8 @@ class CPlayer:
 
     def Render(self):
         self.image.clip_draw(int(self.frame) * 128, 0, 128, 106, self.x, self.y)
+        self.font.draw(10, 925, 'C O I N        %d' % self.coin_cnt, (255, 255, 255))
+        self.font.draw(10, 890, 'F L I G H T  %d' % self.flight_distance, (255, 255, 255))
         pass
 
     ##################################################################################################################

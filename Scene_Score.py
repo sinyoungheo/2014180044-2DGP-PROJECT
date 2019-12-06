@@ -2,6 +2,7 @@ from pico2d import *
 import GameFramework
 
 image = None
+font = None
 
 score = 0
 flight_distance = 0
@@ -10,6 +11,9 @@ flight_distance = 0
 def Enter():
     global image
     image = load_image("Resource/Scene/Scene_04.png")
+
+    global font
+    font = load_font("Font/Maplestory Bold.ttf", 32)
 
 
 def Exit():
@@ -38,7 +42,6 @@ def Handle_Events():
 
 def Update():
     global score
-    print(score)
     pass
 
 
@@ -46,6 +49,14 @@ def Render():
     clear_canvas()
 
     image.draw(360, 480, 720, 960)
+
+    global font
+    global score
+    global flight_distance
+
+    font.draw(230, 460, 'C O I N        %d' % score, (255, 255, 255))
+    font.draw(230, 460 - 45, 'F L I G H T  %d' % flight_distance, (255, 255, 255))
+    font.draw(230, 460 - 90, 'R E S U L T  %d' % (flight_distance + score), (255, 255, 255))
 
     update_canvas()
     pass

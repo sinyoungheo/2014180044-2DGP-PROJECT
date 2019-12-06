@@ -136,13 +136,13 @@ class CBossStage2:
                 subtime_CreateBullet3 += GameFramework.frame_time
                 if subtime_CreateBullet3 >= subtime_UpdateCreateBullet3:
                     ObjectMgr.Add_GameObject(MonsterBullet.CMonsterBullet(self.x, self.y - 50.0, 400, 26, pattern3_angle, True, "BossBullet_2"), "MonsterBullet")
-                    pattern3_angle += 5.0 * direction
+                    pattern3_angle += 7.0 * direction
                     subtime_CreateBullet3 = 0.0
 
             if pattern3_angle > 120 or pattern3_angle < 60:
                 bIsOnBullet3 = False
                 time_CreateBullet3 = 0.0
-                pattern3_angle += 5.0 * (direction * (-1.0))
+                pattern3_angle += 7.0 * (direction * (-1.0))
                 direction *= -1.0
 
         pass
