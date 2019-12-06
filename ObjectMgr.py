@@ -1,6 +1,7 @@
 import CollisionMgr
 import GameFramework
 import Scene_Score
+import Scene_Stage1
 
 # Object List
 ObjLst = []
@@ -73,6 +74,10 @@ def Update():
     # if CollisionMgr.Collision_Monster_Player(LstMonsterBullet, LstPlayer):
     #     GameFramework.Change_State(Scene_Score)
     #     return
+
+    if Scene_Stage1.IsDead_BossStage2:
+        GameFramework.Change_State(Scene_Score)
+        return
 
     pass
 

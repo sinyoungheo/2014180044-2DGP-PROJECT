@@ -4,6 +4,7 @@ import GameFramework
 image = None
 
 score = 0
+flight_distance = 0
 
 
 def Enter():

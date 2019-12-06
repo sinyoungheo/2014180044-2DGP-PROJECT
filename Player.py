@@ -6,6 +6,7 @@ import Effect
 import GameFramework
 import PlayerPet
 import PlayerLaser
+import Scene_Score
 
 # 자석 아이템.
 bIsMagnet = False
@@ -58,6 +59,7 @@ class CPlayer:
         self.bullet_radius = 32
         # 코인 개수
         self.coin_cnt = 0
+        self.flight_distance = 0
         # # 새끼용 생성
         # ObjectMgr.Add_GameObject(PlayerPet.CPlayerPet(self, 1, "pet01"), "PlayerPet")
 
@@ -91,6 +93,10 @@ class CPlayer:
     def Update(self):
         if self.IsDead:
             return -1
+
+        # 비행 거리
+        self.flight_distance += 50 * GameFramework.frame_time
+        Scene_Score.flight_distance = self.flight_distance
 
         # Animation
         self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * GameFramework.frame_time) % 4
