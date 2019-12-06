@@ -104,6 +104,9 @@ class CBossStage2:
         if time_CreateBullet2 >= time_UpdateCreateBullet2:
             time_CreateBullet2 = 0.0
 
+            for n in range(60, 120 + 1, 10):
+                ObjectMgr.Add_GameObject(MonsterBullet.CMonsterBullet(self.x, self.y - 50.0, 400, 26, n, True, "BossBullet_2"), "MonsterBullet")
+
         pass
 
     pass
