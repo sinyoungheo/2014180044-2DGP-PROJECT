@@ -114,7 +114,7 @@ class CBossStage2:
             angle = MathMgr.CalcDegree(self, self.target)
             angle += random.randint(-10, 10)
 
-            ObjectMgr.Add_GameObject(MonsterBullet.CMonsterBullet(self.x, self.y - 50.0, 450, 26, angle, True, "BossBullet_2"), "MonsterBullet")
+            ObjectMgr.Add_GameObject(MonsterBullet.CMonsterBullet(self.x, self.y - 50.0, 450, 20, angle, True, "BossBullet_2"), "MonsterBullet")
             pass
 
         # Pattern 2
@@ -123,7 +123,7 @@ class CBossStage2:
             time_CreateBullet2 = 0.0
 
             for n in range(60, 120 + 1, 10):
-                ObjectMgr.Add_GameObject(MonsterBullet.CMonsterBullet(self.x, self.y - 50.0, 400, 26, n, True, "BossBullet_2"), "MonsterBullet")
+                ObjectMgr.Add_GameObject(MonsterBullet.CMonsterBullet(self.x, self.y - 50.0, 400, 20, n, True, "BossBullet_2"), "MonsterBullet")
 
         print(time_CreateBullet3)
         # Pattern 3
@@ -135,7 +135,7 @@ class CBossStage2:
             if pattern3_angle >= 60 or pattern3_angle <= 120:
                 subtime_CreateBullet3 += GameFramework.frame_time
                 if subtime_CreateBullet3 >= subtime_UpdateCreateBullet3:
-                    ObjectMgr.Add_GameObject(MonsterBullet.CMonsterBullet(self.x, self.y - 50.0, 400, 26, pattern3_angle, True, "BossBullet_2"), "MonsterBullet")
+                    ObjectMgr.Add_GameObject(MonsterBullet.CMonsterBullet(self.x, self.y - 50.0, 400, 20, pattern3_angle, True, "BossBullet_2"), "MonsterBullet")
                     pattern3_angle += 7.0 * direction
                     subtime_CreateBullet3 = 0.0
 

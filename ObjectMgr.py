@@ -2,6 +2,7 @@ import CollisionMgr
 import GameFramework
 import Scene_Score
 import Scene_Stage1
+from pico2d import *
 
 # Object List
 ObjLst = []
@@ -28,11 +29,18 @@ ObjLst.append(LstEffect)
 ObjLst.append(LstUI)
 
 Event = 0
-
+bIsCollision = True
 
 # KeyInput Event
 def Handle_Events():
     global ObjLst
+    global bIsCollision
+
+    events = get_events()
+    for event in events:
+        if event.type == SDL_KEYDOWN:
+            if event.key == SDLK_2:
+                bIsCollision = False
 
     for List in ObjLst:
         for GameObj in List:
@@ -67,13 +75,15 @@ def Update():
     CollisionMgr.Collision_Monster_PLLaser(LstMonster, LstPlayerLaser, LstPlayer[0])
     CollisionMgr.Collision_Player_Item(LstPlayer, LstItem)
 
-    if CollisionMgr.Collision_Monster_Player(LstMonster, LstPlayer):
-        GameFramework.Change_State(Scene_Score)
-        return
+    global bIsCollision
 
-    if CollisionMgr.Collision_Monster_Player(LstMonsterBullet, LstPlayer):
-        GameFramework.Change_State(Scene_Score)
-        return
+    if bIsCollision:
+        if CollisionMgr.Collision_Monster_Player(LstMonster, LstPlayer):
+            GameFramework.Change_State(Scene_Score)
+            return
+        if CollisionMgr.Collision_Monster_Player(LstMonsterBullet, LstPlayer):
+            GameFramework.Change_State(Scene_Score)
+            return
 
     if Scene_Stage1.IsDead_BossStage2:
         GameFramework.Change_State(Scene_Score)

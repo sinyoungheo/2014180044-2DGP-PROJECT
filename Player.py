@@ -45,7 +45,7 @@ class CPlayer:
         self.x, self.y = 360, 80
         self.dir = 0
         self.speed = 400
-        self.radius = 52
+        self.radius = 26
         # 총알 생성 주기.
         self.time_CreateBullet = 0.0
         self.time_UpdateCreateBullet = 0.5
